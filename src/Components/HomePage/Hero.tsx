@@ -29,7 +29,12 @@ const Hero = () => {
           lineHeight="51.2px"
         >
           حان الوقت ليكون للعرب صوتٌ حرٌ سنبدأ العمل بمجرد أن يبدي{" "}
-          <Text color="#5AA48A" display="inline-block" fontSize="40px">
+          <Text
+            as="span"
+            color="#5AA48A"
+            display="inline-block"
+            fontSize="40px"
+          >
             10
           </Text>{" "}
           مليون عربي اهتمامهم كن منهم وابدي اهتمامك الآن

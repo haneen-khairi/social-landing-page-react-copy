@@ -1,7 +1,17 @@
 import { HStack, Text } from "@chakra-ui/react";
 import { BrandLogo } from "../../assets/icons";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <HStack
       p="24px 40px 24px 40px"
@@ -15,8 +25,28 @@ const Navbar = () => {
         fontSize="17px"
         fontWeight="400"
       >
-        <Text>عن المبادرة</Text>
-        <Text>أهداف المشروع</Text>
+        <Text
+          borderBottom="3px solid transparent"
+          _hover={{ color: "primary", borderColor: "primary" }}
+          cursor="pointer"
+          transition="0.3s"
+          lineHeight="2"
+        >
+          <Link to="#" onClick={() => scrollToSection("about")}>
+            عن المبادرة
+          </Link>
+        </Text>
+        <Text
+          borderBottom="3px solid transparent"
+          _hover={{ color: "primary", borderColor: "primary" }}
+          cursor="pointer"
+          transition="0.3s"
+          lineHeight="2"
+        >
+          <Link to="#" onClick={() => scrollToSection("goals")}>
+            أهداف المشروع
+          </Link>
+        </Text>
       </HStack>
     </HStack>
   );
