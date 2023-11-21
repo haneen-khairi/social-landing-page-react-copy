@@ -43,11 +43,12 @@ const Header = () => {
             />
             <HStack justifyContent="flex-end" w="100%">
               <Button
-                color="white"
+                color="#FFD21C"
+                borderColor="#FFD21C"
                 variant="outline"
                 rounded="full"
                 _hover={{
-                  bg: "white",
+                  bg: "#FFD21C",
                   color: "secondary",
                   borderColor: "secondary",
                 }}
@@ -79,13 +80,14 @@ const Header = () => {
             />
             <HStack justifyContent="flex-end" w="100%">
               <Button
-                color="white"
+                color="#88CEFF"
+                borderColor="#88CEFF"
                 variant="outline"
                 rounded="full"
                 _hover={{
-                  bg: "white",
-                  color: "#5F2020",
-                  borderColor: "#5F2020",
+                  bg: "#88CEFF",
+                  color: "secondary",
+                  borderColor: "secondary",
                 }}
               >
                 تطوع الآن
