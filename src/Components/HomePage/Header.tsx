@@ -1,121 +1,150 @@
-import { Box, Button, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Divider,
+  HStack,
+  Text,
+  VStack,
+  useDisclosure,
+} from "@chakra-ui/react";
 import HeroImage from "../../assets/hero.png";
-import ProgressComp from "../ProgressComp";
 import { FaHeart } from "react-icons/fa";
-import { MdGroups } from "react-icons/md";
+import { FaChildReaching } from "react-icons/fa6";
+
 import VideoPlayer from "../VideoPlayer";
+import VolunteerModal from "./Modals/VolunteerModal";
 
 const Header = () => {
+  const {
+    isOpen: isVOpen,
+    onOpen: onVOpen,
+    onClose: onVClose,
+  } = useDisclosure();
   return (
-    <Box mt="30px" px={{ base: "20px", lg: "40px" }}>
-      <HStack flexDir={{ base: "column", lg: "row" }}>
-        <Box
-          bg="black"
-          w="100%"
-          h={{ base: "300px", lg: "590px" }}
-          position="relative"
-          rounded="8px"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          _hover={{
-            ".circle": { bg: "primary", transition: "0.3s" },
-            ".icon": { color: "white", transition: "0.3s" },
-          }}
-          transition="0.3s"
-          cursor="pointer"
-        >
-          <VideoPlayer name="intro" thumbnail={HeroImage} url="" />
-        </Box>
-        {/* <Image
-          src={HeroImage}
-          maxWidth={{ base: "100%", lg: "674px" }}
-          maxH="590px"
-        /> */}
-        <VStack
+    <>
+      <VolunteerModal isOpen={isVOpen} onClose={onVClose} />
+      <Box mt="30px" px={{ base: "20px", lg: "40px" }}>
+        <HStack
+          flexDir={{ base: "column", lg: "row" }}
           spacing="12px"
           align="stretch"
           w="100%"
           fontFamily="Readex Pro"
-          color="white"
+          color="black"
         >
-          <VStack
-            spacing="40px"
+          <Box
+            bg="black"
+            w="100%"
+            h={{ base: "300px", lg: "350px" }}
+            position="relative"
+            rounded="8px"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            _hover={{
+              ".circle": { bg: "primary", transition: "0.3s" },
+              ".icon": { color: "white", transition: "0.3s" },
+            }}
+            transition="0.3s"
+            cursor="pointer"
+          >
+            <VideoPlayer name="intro" thumbnail={HeroImage} url="" />
+          </Box>
+          {/* <VStack
+            spacing="12px"
             align="stretch"
-            bg="secondary"
+            w="100%"
+            fontFamily="Readex Pro"
+            color="white"
+          > */}
+          <VStack
+            spacing="20px"
+            align="stretch"
             p="16px"
             rounded="8px"
+            textAlign="center"
           >
             <Text
               fontSize="18px"
               fontWeight="400"
               w={{ base: "100%", lg: "428px" }}
+              textAlign="center"
             >
               سنبدأ العمل بمجرد أن يبدي 10 مليون عربي اهتمامهم كن منهم وابدي
               اهتمامك الآن
             </Text>
-            <ProgressComp
-              title="عدد المهتمين"
-              value="5000"
-              range="1000000"
-              icon={<FaHeart />}
-            />
-            <HStack justifyContent="flex-end" w="100%">
-              <Button
-                color="#FFD21C"
-                borderColor="#FFD21C"
-                variant="outline"
-                rounded="full"
-                _hover={{
-                  bg: "#FFD21C",
-                  color: "secondary",
-                  borderColor: "secondary",
-                }}
-              >
+            <VStack>
+              <FaHeart color="red" size="30px" />
+              <Text textAlign="center" fontSize="24px" fontWeight="700">
+                عدد المهتمين
+              </Text>
+            </VStack>
+
+            <Text fontSize="50px" color="#5AA48A">
+              {Number(5000).toLocaleString()}
+            </Text>
+
+            <HStack justifyContent="center" w="100%">
+              <Button bg="#FFD21C" rounded="full" _hover={{ bg: "#D1AE21" }}>
                 ابدي اهتمامك
               </Button>
             </HStack>
           </VStack>
+          <Center height="350px" display={{ base: "none", lg: "flex" }}>
+            <Divider
+              orientation="vertical"
+              borderColor="primary"
+              borderWidth="5px"
+              h="350px"
+            />
+          </Center>
+          <Center height="350px" display={{ base: "flex", lg: "none" }}>
+            <Divider borderColor="primary" borderWidth="5px" />
+          </Center>
+
           <VStack
-            spacing="40px"
+            spacing="20px"
             align="stretch"
-            bg="#5F2020"
             p="16px"
             rounded="8px"
+            textAlign="center"
           >
             <Text
               fontSize="18px"
               fontWeight="400"
               w={{ base: "100%", lg: "428px" }}
+              textAlign="center"
             >
-              هذه المبادرة لكل من يجد لديه القدرة على المساهمة في تطويرها بشكل
-              تطوعي كل حسب تخصصة
+              سنبدأ العمل بمجرد أن يبدي 10 مليون عربي اهتمامهم كن منهم وابدي
+              اهتمامك الآن
             </Text>
-            <ProgressComp
-              title="عدد المتطوعين"
-              value="567"
-              range="1000"
-              icon={<MdGroups size="25px" />}
-            />
-            <HStack justifyContent="flex-end" w="100%">
+            <VStack>
+              <FaChildReaching color="#1DA6FF" size="30px" />
+              <Text textAlign="center" fontSize="24px" fontWeight="700">
+                عدد المتطوعين
+              </Text>
+            </VStack>
+
+            <Text fontSize="50px" color="#5AA48A">
+              {Number(5000).toLocaleString()}
+            </Text>
+
+            <HStack justifyContent="center" w="100%">
               <Button
-                color="#88CEFF"
-                borderColor="#88CEFF"
-                variant="outline"
+                bg="#FFD21C"
                 rounded="full"
-                _hover={{
-                  bg: "#88CEFF",
-                  color: "secondary",
-                  borderColor: "secondary",
-                }}
+                _hover={{ bg: "#D1AE21" }}
+                onClick={() => onVOpen()}
               >
                 تطوع الآن
               </Button>
             </HStack>
           </VStack>
-        </VStack>
-      </HStack>
-    </Box>
+          {/* </VStack> */}
+        </HStack>
+      </Box>
+    </>
   );
 };
 

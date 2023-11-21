@@ -1,4 +1,4 @@
-import { Box, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, HStack, Text, VStack } from "@chakra-ui/react";
 import ChartImage from "../../assets/chart.png";
 
 const Hero = () => {
@@ -40,8 +40,19 @@ const Hero = () => {
           >
             23
           </Text>{" "}
-          مليون عربي اهتمامهم كن منهم وابدي اهتمامك الآن
+          مليون عربي اهتمامهم.
         </Text>
+        <Text color="#5AA48A" fontSize="40px" fontWeight="700">
+          كن منهم وابدي اهتمامك الآن
+        </Text>
+        <HStack justifyContent="center" w="100%" spacing="15px">
+          <Button bg="#FFD21C" rounded="full" _hover={{ bg: "#D1AE21" }}>
+            ابدي اهتمامك
+          </Button>
+          <Button bg="#FFD21C" rounded="full" _hover={{ bg: "#D1AE21" }}>
+            تطوع الآن
+          </Button>
+        </HStack>
       </VStack>
     </Box>
   );
