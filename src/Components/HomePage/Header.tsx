@@ -51,21 +51,24 @@ const Header = () => {
           </Box>
 
           <VStack
-            spacing="40px"
+            spacing="30px"
             align="stretch"
             p="16px"
             rounded="8px"
             textAlign="center"
           >
-            <Text
-              fontSize="18px"
-              fontWeight="400"
-              w={{ base: "100%", lg: "428px" }}
-              textAlign="center"
-            >
-              سنبدأ العمل بمجرد أن يبدي 23 مليون عربي (5% من عدد سكان العالم
-              العربي) اهتمامهم كن منهم وابدي اهتمامك الآن
-            </Text>
+            <Box>
+              <Text
+                fontSize="18px"
+                fontWeight="400"
+                w={{ base: "100%", lg: "428px" }}
+                textAlign="center"
+              >
+                سنبدأ العمل بمجرد أن يبدي 23 مليون عربي (5% من عدد سكان العالم
+                العربي) اهتمامهم.
+              </Text>
+              <Text> كن منهم وابدي اهتمامك الآن</Text>
+            </Box>
 
             <Text textAlign="center" fontSize="24px" fontWeight="700">
               عدد المهتمين
