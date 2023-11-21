@@ -52,7 +52,7 @@ const Hero = () => {
             color="white"
             _hover={{ bg: "#D99921" }}
           >
-            ابدي اهتمامك
+            مهتم
           </Button>
           <Button
             bg="#FFB326"
