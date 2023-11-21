@@ -9,8 +9,6 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import HeroImage from "../../assets/hero.png";
-import { FaHeart } from "react-icons/fa";
-import { FaChildReaching } from "react-icons/fa6";
 
 import VideoPlayer from "../VideoPlayer";
 import VolunteerModal from "./Modals/VolunteerModal";
@@ -51,15 +49,9 @@ const Header = () => {
           >
             <VideoPlayer name="intro" thumbnail={HeroImage} url="" />
           </Box>
-          {/* <VStack
-            spacing="12px"
-            align="stretch"
-            w="100%"
-            fontFamily="Readex Pro"
-            color="white"
-          > */}
+
           <VStack
-            spacing="20px"
+            spacing="40px"
             align="stretch"
             p="16px"
             rounded="8px"
@@ -74,19 +66,22 @@ const Header = () => {
               سنبدأ العمل بمجرد أن يبدي 10 مليون عربي اهتمامهم كن منهم وابدي
               اهتمامك الآن
             </Text>
-            <VStack>
-              <FaHeart color="red" size="30px" />
-              <Text textAlign="center" fontSize="24px" fontWeight="700">
-                عدد المهتمين
-              </Text>
-            </VStack>
+
+            <Text textAlign="center" fontSize="24px" fontWeight="700">
+              عدد المهتمين
+            </Text>
 
             <Text fontSize="50px" color="#5AA48A">
               {Number(5000).toLocaleString()}
             </Text>
 
             <HStack justifyContent="center" w="100%">
-              <Button bg="#FFD21C" rounded="full" _hover={{ bg: "#D1AE21" }}>
+              <Button
+                bg="#FFB326"
+                rounded="full"
+                color="white"
+                _hover={{ bg: "#D99921" }}
+              >
                 ابدي اهتمامك
               </Button>
             </HStack>
@@ -95,16 +90,17 @@ const Header = () => {
             <Divider
               orientation="vertical"
               borderColor="primary"
-              borderWidth="5px"
+              borderWidth="3px"
               h="350px"
+              rounded="full"
             />
           </Center>
-          <Center height="350px" display={{ base: "flex", lg: "none" }}>
-            <Divider borderColor="primary" borderWidth="5px" />
+          <Center w="100%" display={{ base: "flex", lg: "none" }}>
+            <Divider borderColor="primary" borderWidth="3px" rounded="full" />
           </Center>
 
           <VStack
-            spacing="20px"
+            spacing="40px"
             align="stretch"
             p="16px"
             rounded="8px"
@@ -116,32 +112,30 @@ const Header = () => {
               w={{ base: "100%", lg: "428px" }}
               textAlign="center"
             >
-              سنبدأ العمل بمجرد أن يبدي 10 مليون عربي اهتمامهم كن منهم وابدي
-              اهتمامك الآن
+              هذه المبادرة لكل من يجد لديه القدرة على المساهمة في تطويرها بشكل
+              تطوعي كل حسب تخصصة
             </Text>
-            <VStack>
-              <FaChildReaching color="#1DA6FF" size="30px" />
-              <Text textAlign="center" fontSize="24px" fontWeight="700">
-                عدد المتطوعين
-              </Text>
-            </VStack>
+
+            <Text textAlign="center" fontSize="24px" fontWeight="700">
+              عدد المتطوعين
+            </Text>
 
             <Text fontSize="50px" color="#5AA48A">
-              {Number(5000).toLocaleString()}
+              {Number(567).toLocaleString()}
             </Text>
 
             <HStack justifyContent="center" w="100%">
               <Button
-                bg="#FFD21C"
+                bg="#FFB326"
+                color="white"
                 rounded="full"
-                _hover={{ bg: "#D1AE21" }}
+                _hover={{ bg: "#D99921" }}
                 onClick={() => onVOpen()}
               >
                 تطوع الآن
               </Button>
             </HStack>
           </VStack>
-          {/* </VStack> */}
         </HStack>
       </Box>
     </>

@@ -46,10 +46,20 @@ const Hero = () => {
           كن منهم وابدي اهتمامك الآن
         </Text>
         <HStack justifyContent="center" w="100%" spacing="15px">
-          <Button bg="#FFD21C" rounded="full" _hover={{ bg: "#D1AE21" }}>
+          <Button
+            bg="#FFB326"
+            rounded="full"
+            color="white"
+            _hover={{ bg: "#D99921" }}
+          >
             ابدي اهتمامك
           </Button>
-          <Button bg="#FFD21C" rounded="full" _hover={{ bg: "#D1AE21" }}>
+          <Button
+            bg="#FFB326"
+            color="white"
+            rounded="full"
+            _hover={{ bg: "#D99921" }}
+          >
             تطوع الآن
           </Button>
         </HStack>
