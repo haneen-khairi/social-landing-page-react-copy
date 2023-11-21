@@ -20,7 +20,7 @@ const Footer = () => {
         fontWeight="400"
         fontFamily="Readex Pro"
         mt="24px"
-        w="760px"
+        w={{ base: "100%", lg: "760px" }}
         lineHeight="44px"
         textAlign="center"
       >

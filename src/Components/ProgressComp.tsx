@@ -1,21 +1,28 @@
-import { Box, HStack, Progress, Text } from "@chakra-ui/react";
+import { Box, HStack, Progress, Text, VStack } from "@chakra-ui/react";
+import { ReactElement } from "react";
 
 interface Props {
   title: string;
   value: string;
   range: string;
+  icon?: ReactElement;
 }
-const ProgressComp = ({ title, value, range }: Props) => {
+const ProgressComp = ({ title, value, range, icon }: Props) => {
   return (
     <Box w="100%">
-      <HStack justifyContent="space-between" mb="16px">
-        <Text fontSize="16px" fontWeight="500">
-          {title}
-        </Text>
+      <VStack align="end">
+        <HStack>
+          <Text>{icon}</Text>
+
+          <Text fontSize="16px" fontWeight="500">
+            {title}
+          </Text>
+        </HStack>
+
         <Text fontSize="24px" fontWeight="600">
-          {value} / {range}
+          {Number(value).toLocaleString()} / {Number(range).toLocaleString()}
         </Text>
-      </HStack>
+      </VStack>
       <Progress
         value={(Number(value) / Number(range)) * 100}
         colorScheme="green"

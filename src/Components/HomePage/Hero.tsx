@@ -9,22 +9,25 @@ const Hero = () => {
       bgClip="content-box"
       bgPosition="center"
       bgRepeat="no-repeat"
-      h="40vh"
       px="50px"
       display="flex"
       justifyContent="center"
       alignItems="center"
       fontFamily="Alexandria"
-      mt="40px"
     >
-      <VStack spacing="40px">
-        <Text fontSize="18px" fontWeight="700" fontFamily="Readex Pro">
+      <VStack spacing="40px" py="40px">
+        <Text
+          fontSize="18px"
+          fontWeight="700"
+          fontFamily="Readex Pro"
+          textAlign="center"
+        >
           مرحبا بكم في لحظة فارقة في تاريخ أمتنا العربية
         </Text>
         <Text
           fontSize="32px"
           fontWeight="700"
-          w="595px"
+          w={{ base: "100%", lg: "595px" }}
           textAlign="center"
           lineHeight="51.2px"
         >
@@ -35,7 +38,7 @@ const Hero = () => {
             display="inline-block"
             fontSize="40px"
           >
-            10
+            23
           </Text>{" "}
           مليون عربي اهتمامهم كن منهم وابدي اهتمامك الآن
         </Text>

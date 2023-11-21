@@ -61,11 +61,15 @@ function Goals() {
     },
   ];
   return (
-    <Box px="80px" id="goals">
+    <Box px={{ base: "40px", lg: "80px" }} id="goals">
       <SectionTitle title="أهداف المشروع" />
-      <VStack spacing="24px" align="stretch">
+      <VStack spacing={{ base: "50px", lg: "24px" }} align="stretch">
         {goals.map((item, index) => (
-          <HStack spacing="24px" key={index}>
+          <HStack
+            spacing="24px"
+            key={index}
+            flexDir={{ base: "column", lg: "row" }}
+          >
             <Box
               bg="primary"
               w="120px"
@@ -80,7 +84,7 @@ function Goals() {
             <Box
               bg="#F3F3F3"
               p="24px"
-              h="120px"
+              h={{ base: "100%", lg: "120px" }}
               display="flex"
               justifyContent="start"
               alignItems="center"

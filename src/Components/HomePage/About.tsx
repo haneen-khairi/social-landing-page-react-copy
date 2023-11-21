@@ -13,6 +13,7 @@ const About = () => {
         spacing="40px"
         lineHeight="48.4px"
         alignItems="start"
+        flexDir={{ base: "column", lg: "row" }}
       >
         <VStack align="stretch" flex="1">
           <Text>
