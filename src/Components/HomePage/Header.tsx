@@ -1,18 +1,37 @@
-import { Box, Button, HStack, Image, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, HStack, Text, VStack } from "@chakra-ui/react";
 import HeroImage from "../../assets/hero.png";
 import ProgressComp from "../ProgressComp";
 import { FaHeart } from "react-icons/fa";
 import { MdGroups } from "react-icons/md";
+import VideoPlayer from "../VideoPlayer";
 
 const Header = () => {
   return (
     <Box mt="30px" px={{ base: "20px", lg: "40px" }}>
       <HStack flexDir={{ base: "column", lg: "row" }}>
-        <Image
+        <Box
+          bg="black"
+          w="100%"
+          h={{ base: "300px", lg: "590px" }}
+          position="relative"
+          rounded="8px"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          _hover={{
+            ".circle": { bg: "primary", transition: "0.3s" },
+            ".icon": { color: "white", transition: "0.3s" },
+          }}
+          transition="0.3s"
+          cursor="pointer"
+        >
+          <VideoPlayer name="intro" thumbnail={HeroImage} url="" />
+        </Box>
+        {/* <Image
           src={HeroImage}
           maxWidth={{ base: "100%", lg: "674px" }}
           maxH="590px"
-        />
+        /> */}
         <VStack
           spacing="12px"
           align="stretch"
