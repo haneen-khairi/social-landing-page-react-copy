@@ -1,5 +1,12 @@
+import { VStack } from "@chakra-ui/react";
+import Navbar from "../../Components/HomePage/Navbar";
+
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <VStack align="stretch" dir="rtl">
+      <Navbar />
+    </VStack>
+  );
 };
 
 export default HomePage;
