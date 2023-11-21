@@ -9,7 +9,12 @@ const Navbar = () => {
       spacing="56px"
     >
       <BrandLogo />
-      <HStack spacing="32px" fontFamily="Readex Pro">
+      <HStack
+        spacing="32px"
+        fontFamily="Readex Pro"
+        fontSize="17px"
+        fontWeight="400"
+      >
         <Text>عن المبادرة</Text>
         <Text>أهداف المشروع</Text>
       </HStack>
