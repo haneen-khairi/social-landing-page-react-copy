@@ -14,12 +14,16 @@ import {
 } from "@chakra-ui/react";
 import { MdGroups } from "react-icons/md";
 import { BsArrowLeft } from "react-icons/bs";
+import { useGetWorkFields } from "../../../hooks/useCore";
+import MultiSelectArea from "../../MultiSelectArea/MultiSelectArea";
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
 }
 function VolunteerModal({ isOpen, onClose }: Props) {
+  const { data } = useGetWorkFields();
+  console.log(data);
   //   const toast = useToast();
 
   return (
@@ -65,7 +69,18 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                   >
                     الإسم
                   </FormLabel>
-                  <Input type="email" w="100%" rounded="full" h="48px" />
+                  <Input
+                    type="email"
+                    w="100%"
+                    rounded="full"
+                    h="48px"
+                    borderColor="#E2E8F0"
+                    _focus={{
+                      boxShadow: "none",
+                      outline: "none",
+                      borderColor: "#E2E8F0",
+                    }}
+                  />
                 </FormControl>
               </VStack>
               <VStack align="stretch" w="100%">
@@ -79,7 +94,18 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                   >
                     البريد الإلكتروني
                   </FormLabel>
-                  <Input type="email" w="100%" rounded="full" h="48px" />
+                  <Input
+                    type="email"
+                    w="100%"
+                    rounded="full"
+                    h="48px"
+                    borderColor="#E2E8F0"
+                    _focus={{
+                      boxShadow: "none",
+                      outline: "none",
+                      borderColor: "#E2E8F0",
+                    }}
+                  />
                 </FormControl>
               </VStack>
               <VStack align="stretch" w="100%">
@@ -93,7 +119,14 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                   >
                     طبيعة العمل
                   </FormLabel>
-                  <Input type="email" w="100%" rounded="full" h="48px" />
+
+                  <MultiSelectArea
+                    option={data ? data : []}
+                    inputName="ss"
+                    placeholder=""
+                    onChange={() => {}}
+                    isMulti={true}
+                  />
                 </FormControl>
               </VStack>
               <VStack align="stretch" w="100%">
@@ -107,7 +140,18 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                   >
                     عدد سنوات الخبرة
                   </FormLabel>
-                  <Input type="email" w="100%" rounded="full" h="48px" />
+                  <Input
+                    type="email"
+                    w="100%"
+                    rounded="full"
+                    h="48px"
+                    borderColor="#E2E8F0"
+                    _focus={{
+                      boxShadow: "none",
+                      outline: "none",
+                      borderColor: "#E2E8F0",
+                    }}
+                  />
                 </FormControl>
               </VStack>
               <VStack align="stretch" w="100%">
@@ -121,7 +165,18 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                   >
                     عدد الساعات التطوعية للمشروع
                   </FormLabel>
-                  <Input type="email" w="100%" rounded="full" h="48px" />
+                  <Input
+                    type="email"
+                    w="100%"
+                    rounded="full"
+                    h="48px"
+                    borderColor="#E2E8F0"
+                    _focus={{
+                      boxShadow: "none",
+                      outline: "none",
+                      borderColor: "#E2E8F0",
+                    }}
+                  />
                 </FormControl>
               </VStack>
               <Button

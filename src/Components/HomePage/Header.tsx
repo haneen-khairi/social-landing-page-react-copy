@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Center,
+  CircularProgress,
   Divider,
   HStack,
   Text,
@@ -12,6 +13,7 @@ import HeroImage from "../../assets/hero.png";
 
 import VideoPlayer from "../VideoPlayer";
 import VolunteerModal from "./Modals/VolunteerModal";
+import { useGetStatistics } from "../../hooks/useCore";
 
 const Header = () => {
   const {
@@ -19,6 +21,8 @@ const Header = () => {
     onOpen: onVOpen,
     onClose: onVClose,
   } = useDisclosure();
+  const { data, isLoading } = useGetStatistics();
+  console.log(data?.interest_count);
   return (
     <>
       <VolunteerModal isOpen={isVOpen} onClose={onVClose} />
@@ -74,9 +78,16 @@ const Header = () => {
               عدد المهتمين
             </Text>
 
-            <Text fontSize="50px" color="#5AA48A">
-              {Number(5000).toLocaleString()}
-            </Text>
+            {!isLoading && (
+              <Text fontSize="50px" color="#5AA48A">
+                {data?.interest_count}
+              </Text>
+            )}
+            {isLoading && (
+              <Box mx="auto">
+                <CircularProgress isIndeterminate color="#5AA48A" />
+              </Box>
+            )}
 
             <HStack justifyContent="center" w="100%">
               <Button
@@ -123,9 +134,16 @@ const Header = () => {
               عدد المتطوعين
             </Text>
 
-            <Text fontSize="50px" color="#5AA48A">
-              {Number(567).toLocaleString()}
-            </Text>
+            {!isLoading && (
+              <Text fontSize="50px" color="#5AA48A">
+                {data?.volunteer_count}
+              </Text>
+            )}
+            {isLoading && (
+              <Box mx="auto">
+                <CircularProgress isIndeterminate color="#5AA48A" />
+              </Box>
+            )}
 
             <HStack justifyContent="center" w="100%">
               <Button
