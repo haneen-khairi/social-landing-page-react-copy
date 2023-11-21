@@ -44,7 +44,7 @@ const Navbar = () => {
           lineHeight="2"
         >
           <Link to="#" onClick={() => scrollToSection("goals")}>
-            أهداف المشروع
+            أهداف المبادرة
           </Link>
         </Text>
       </HStack>

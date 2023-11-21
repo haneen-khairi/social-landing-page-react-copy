@@ -27,7 +27,7 @@ const Hero = () => {
         <Text
           fontSize="32px"
           fontWeight="700"
-          w={{ base: "100%", lg: "595px" }}
+          w={{ base: "100%", lg: "500px" }}
           textAlign="center"
           lineHeight="51.2px"
         >
