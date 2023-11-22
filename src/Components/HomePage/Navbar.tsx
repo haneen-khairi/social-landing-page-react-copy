@@ -47,6 +47,17 @@ const Navbar = () => {
             أهداف المبادرة
           </Link>
         </Text>
+        <Text
+          borderBottom="3px solid transparent"
+          _hover={{ color: "primary", borderColor: "primary" }}
+          cursor="pointer"
+          transition="0.3s"
+          lineHeight="2"
+        >
+          <Link to="#" onClick={() => scrollToSection("sponsors")}>
+            الجهات الداعمة
+          </Link>
+        </Text>
       </HStack>
     </HStack>
   );

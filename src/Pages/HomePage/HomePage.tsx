@@ -5,6 +5,7 @@ import Hero from "../../Components/HomePage/Hero";
 import About from "../../Components/HomePage/About";
 import Goals from "../../Components/HomePage/Goals";
 import Footer from "../../Components/HomePage/Footer";
+import Sponsors from "../../Components/HomePage/Sponsors";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
       <Hero />
       <About />
       <Goals />
+      <Sponsors />
       <Footer />
     </VStack>
   );

@@ -1,5 +1,6 @@
 import RequestIntrest from "../entities/Core/RequestIntrest";
 import RequestVolunteer from "../entities/Core/RequestVolunteer";
+import Sponsors from "../entities/Core/Sponsors";
 import Statistics from "../entities/Core/Statistics";
 import WorkField from "../entities/Core/WorkField";
 import APIClient from "../services/api-client";
@@ -7,6 +8,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const apiClient = new APIClient<WorkField>("/work-fields/");
 const apiStatisitcs = new APIClient<Statistics>("/statistics/");
+const apiSponsors = new APIClient<Sponsors>(`/sponsors/`);
 const apiRequsetVolunteer = new APIClient<RequestVolunteer>(`/volunteer/`);
 const apiRequsetIntrest = new APIClient<RequestIntrest>(`/interest/`);
 
@@ -22,6 +24,14 @@ const useGetStatistics = () => {
   return useQuery<Statistics>({
     queryKey: ["Statistics"],
     queryFn: apiStatisitcs.get,
+    staleTime: 24 * 60 * 60 * 1000, //24h
+  });
+};
+
+const useGetSponsors = () => {
+  return useQuery<Sponsors[]>({
+    queryKey: ["Sponsors"],
+    queryFn: apiSponsors.get,
     staleTime: 24 * 60 * 60 * 1000, //24h
   });
 };
@@ -61,4 +71,5 @@ export {
   useGetStatistics,
   useRequestVolunteer,
   useRequestIntrest,
+  useGetSponsors,
 };
