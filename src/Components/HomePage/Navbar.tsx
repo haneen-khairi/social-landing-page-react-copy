@@ -31,10 +31,9 @@ const Navbar = () => {
           cursor="pointer"
           transition="0.3s"
           lineHeight="2"
+          onClick={() => scrollToSection("about")}  
         >
-          <Link to="#" onClick={() => scrollToSection("about")}>
-            عن المبادرة
-          </Link>
+          <Link to="#">عن المبادرة</Link>
         </Text>
         <Text
           borderBottom="3px solid transparent"
@@ -42,10 +41,9 @@ const Navbar = () => {
           cursor="pointer"
           transition="0.3s"
           lineHeight="2"
+          onClick={() => scrollToSection("goals")}
         >
-          <Link to="#" onClick={() => scrollToSection("goals")}>
-            أهداف المبادرة
-          </Link>
+          <Link to="#">أهداف المبادرة</Link>
         </Text>
         <Text
           borderBottom="3px solid transparent"
@@ -53,10 +51,9 @@ const Navbar = () => {
           cursor="pointer"
           transition="0.3s"
           lineHeight="2"
+          onClick={() => scrollToSection("sponsors")}
         >
-          <Link to="#" onClick={() => scrollToSection("sponsors")}>
-            الجهات الداعمة
-          </Link>
+          <Link to="#">الجهات الداعمة</Link>
         </Text>
       </HStack>
     </HStack>
