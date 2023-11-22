@@ -22,7 +22,6 @@ const Header = () => {
     onClose: onVClose,
   } = useDisclosure();
   const { data, isLoading } = useGetStatistics();
-  console.log(data?.interest_count);
   return (
     <>
       <VolunteerModal isOpen={isVOpen} onClose={onVClose} />
