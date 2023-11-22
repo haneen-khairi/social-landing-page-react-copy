@@ -3,7 +3,11 @@ import SectionTitle from "../SectionTitle";
 
 const About = () => {
   return (
-    <Box p="80px" id="about">
+    <Box
+      p={{ base: "20px", lg: "80px" }}
+      id="about"
+      textAlign={{ base: "center", lg: "right" }}
+    >
       <SectionTitle title="عن المبادرة" />
       <HStack
         mt="40px"

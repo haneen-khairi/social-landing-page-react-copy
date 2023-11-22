@@ -17,6 +17,8 @@ const Navbar = () => {
       p="24px 40px 24px 40px"
       borderBottom="1px solid #0000001F"
       spacing="56px"
+      flexWrap="wrap"
+      justifyContent={{ base: "center", lg: "flex-start" }}
     >
       <BrandLogo />
       <HStack
@@ -31,7 +33,7 @@ const Navbar = () => {
           cursor="pointer"
           transition="0.3s"
           lineHeight="2"
-          onClick={() => scrollToSection("about")}  
+          onClick={() => scrollToSection("about")}
         >
           <Link to="#">عن المبادرة</Link>
         </Text>
