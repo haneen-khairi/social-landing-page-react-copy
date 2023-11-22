@@ -86,7 +86,10 @@ const Header = () => {
 
             {!isLoading && (
               <Text fontSize="50px" color="#5AA48A">
-                {data?.interest_count}
+                {data?.interest_count
+                  .toString()
+                  .padStart(8, "0")
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </Text>
             )}
             {isLoading && (
@@ -143,7 +146,10 @@ const Header = () => {
 
             {!isLoading && (
               <Text fontSize="50px" color="#5AA48A">
-                {data?.volunteer_count}
+                {data?.volunteer_count
+                  .toString()
+                  .padStart(5, "0")
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </Text>
             )}
             {isLoading && (
