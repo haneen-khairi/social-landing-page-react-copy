@@ -47,22 +47,14 @@ const Hero = () => {
             مرحبا بكم في لحظة فارقة في تاريخ أمتنا العربية
           </Text>
           <Text
-            fontSize="32px"
+            fontSize="30px"
             fontWeight="700"
             w={{ base: "100%", lg: "500px" }}
             textAlign="center"
             lineHeight="51.2px"
           >
-            حان الوقت ليكون للعرب صوتٌ حرٌ سنبدأ العمل بمجرد أن يبدي{" "}
-            <Text
-              as="span"
-              color="#5AA48A"
-              display="inline-block"
-              fontSize="40px"
-            >
-              23
-            </Text>{" "}
-            مليون عربي اهتمامهم.
+            حان الوقت ليكون للعرب صوتٌ حرٌ
+
           </Text>
           <Text color="#5AA48A" fontSize="40px" fontWeight="700">
             كن منهم وابدي اهتمامك الآن

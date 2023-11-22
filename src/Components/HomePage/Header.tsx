@@ -74,8 +74,8 @@ const Header = () => {
                 w={{ base: "100%", lg: "428px" }}
                 textAlign="center"
               >
-                سنبدأ العمل بمجرد أن يبدي 23 مليون عربي (5% من عدد سكان العالم
-                العربي) اهتمامهم.
+
+                سينتهي استطلاع الرأي بعد ثلاثين يوماً من اليوم. شارك في الاستطلاع وابدي اهتمامك الآن
               </Text>
               <Text> كن منهم وابدي اهتمامك الآن</Text>
             </Box>
@@ -87,9 +87,10 @@ const Header = () => {
             {!isLoading && (
               <Text fontSize="50px" color="#5AA48A">
                 {data?.interest_count
-                  .toString()
-                  .padStart(8, "0")
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  // .toString()
+                  // .padStart(8, "0")
+                  // .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
               </Text>
             )}
             {isLoading && (
@@ -136,8 +137,7 @@ const Header = () => {
               w={{ base: "100%", lg: "428px" }}
               textAlign="center"
             >
-              هذه المبادرة لكل من يجد لديه القدرة على المساهمة في تطويرها بشكل
-              تطوعي كل حسب تخصصة
+              هل أنت على استعداد للتطوع في حال تقرر إنشاء منظومة تواصل اجتماعي عربي؟ ‎
             </Text>
 
             <Text textAlign="center" fontSize="24px" fontWeight="700">
@@ -147,9 +147,10 @@ const Header = () => {
             {!isLoading && (
               <Text fontSize="50px" color="#5AA48A">
                 {data?.volunteer_count
-                  .toString()
-                  .padStart(5, "0")
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  // .toString()
+                  // .padStart(5, "0")
+                  // .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                }
               </Text>
             )}
             {isLoading && (
