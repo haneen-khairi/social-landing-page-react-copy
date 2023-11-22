@@ -12,8 +12,9 @@ import {
 import HeroImage from "../../assets/hero.png";
 
 import VideoPlayer from "../VideoPlayer";
-import VolunteerModal from "./Modals/VolunteerModal";
+import VolunteerModal from "./Modals/VolunteerModal/VolunteerModal";
 import { useGetStatistics } from "../../hooks/useCore";
+import IntrestModal from "./Modals/InterestModal/IntrestModal";
 
 const Header = () => {
   const {
@@ -21,10 +22,16 @@ const Header = () => {
     onOpen: onVOpen,
     onClose: onVClose,
   } = useDisclosure();
+  const {
+    isOpen: isIOpen,
+    onOpen: onIOpen,
+    onClose: onIClose,
+  } = useDisclosure();
   const { data, isLoading } = useGetStatistics();
   return (
     <>
       <VolunteerModal isOpen={isVOpen} onClose={onVClose} />
+      <IntrestModal isOpen={isIOpen} onClose={onIClose} />
       <Box mt="30px" px={{ base: "20px", lg: "40px" }}>
         <HStack
           flexDir={{ base: "column", lg: "row" }}
@@ -94,6 +101,7 @@ const Header = () => {
                 rounded="full"
                 color="white"
                 _hover={{ bg: "#D99921" }}
+                onClick={() => onIOpen()}
               >
                 مهتم
               </Button>

@@ -11,16 +11,19 @@ import {
   Text,
   VStack,
   useToast,
-  //   useToast,
 } from "@chakra-ui/react";
 import { MdGroups } from "react-icons/md";
 import { BsArrowLeft } from "react-icons/bs";
-import { useGetWorkFields, useRequestVolunteer } from "../../../hooks/useCore";
-import MultiSelectArea from "../../MultiSelectArea/MultiSelectArea";
+import {
+  useGetWorkFields,
+  useRequestVolunteer,
+} from "../../../../hooks/useCore";
+import MultiSelectArea from "../../../MultiSelectArea/MultiSelectArea";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
-import ErrorText from "../../ErrorText";
+import ErrorText from "../../../ErrorText";
+import VolunteerInputs from "./VolunteerInputs";
+import VolunteerSchema from "./VolunteerSchema";
 
 interface Props {
   isOpen: boolean;
@@ -30,28 +33,7 @@ type Option = {
   id: number;
   name: string;
 };
-type Inputs = {
-  name: string;
-  email: string;
-  phone_number: string;
-  field_of_work: number[];
-  volunteer_hours: string;
-  years_of_experience: string;
-  error?: string | undefined;
-};
 
-const schema = yup
-  .object()
-  .shape({
-    name: yup.string().required("هذا الحقل إجباري"),
-    email: yup.string().required("هذا الحقل إجباري"),
-    phone_number: yup.string().required("هذا الحقل إجباري"),
-    field_of_work: yup.array().required("هذا الحقل إجباري"),
-    volunteer_hours: yup.string().required("هذا الحقل إجباري"),
-    years_of_experience: yup.string().required("هذا الحقل إجباري"),
-    error: yup.string(),
-  })
-  .required();
 function VolunteerModal({ isOpen, onClose }: Props) {
   const {
     register,
@@ -61,7 +43,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
     reset,
   } = useForm({
     defaultValues: {},
-    resolver: yupResolver<Inputs>(schema),
+    resolver: yupResolver<VolunteerInputs>(VolunteerSchema),
     mode: "onTouched",
     reValidateMode: "onSubmit",
   });
@@ -69,7 +51,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
   const requestVolunteer = useRequestVolunteer();
 
   const toast = useToast();
-  const onSubmit = (values: Inputs) => {
+  const onSubmit = (values: VolunteerInputs) => {
     requestVolunteer
       .mutateAsync({
         email: values.email,
@@ -123,8 +105,8 @@ function VolunteerModal({ isOpen, onClose }: Props) {
               textAlign="center"
               color="#374151"
             >
-              هذه المبادرة لكل من يجد لديه القدرة على المساهمة في تطويرها بشكل
-              تطوعي كل حسب تخصصة
+              الرجاء بيان أدناه في أي مجال ترغب في التطوع مع العلم انه بامكانك
+              اختيار أكثر من مجال.
             </Text>
           </VStack>
 

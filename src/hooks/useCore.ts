@@ -1,3 +1,4 @@
+import RequestIntrest from "../entities/Core/RequestIntrest";
 import RequestVolunteer from "../entities/Core/RequestVolunteer";
 import Statistics from "../entities/Core/Statistics";
 import WorkField from "../entities/Core/WorkField";
@@ -7,6 +8,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 const apiClient = new APIClient<WorkField>("/work-fields/");
 const apiStatisitcs = new APIClient<Statistics>("/statistics/");
 const apiRequsetVolunteer = new APIClient<RequestVolunteer>(`/volunteer/`);
+const apiRequsetIntrest = new APIClient<RequestIntrest>(`/interest/`);
 
 const useGetWorkFields = () => {
   return useQuery<WorkField[]>({
@@ -39,4 +41,24 @@ const useRequestVolunteer = () => {
   });
 };
 
-export { useGetWorkFields, useGetStatistics, useRequestVolunteer };
+const useRequestIntrest = () => {
+  const clientquery = useQueryClient();
+
+  return useMutation<RequestIntrest, Error, RequestIntrest>({
+    mutationFn: apiRequsetIntrest.post,
+    onSuccess: () => {
+      clientquery.refetchQueries({ queryKey: ["Statistics"], type: "active" });
+      return "Added";
+    },
+    onError: (error) => {
+      if (error) return error;
+    },
+  });
+};
+
+export {
+  useGetWorkFields,
+  useGetStatistics,
+  useRequestVolunteer,
+  useRequestIntrest,
+};
