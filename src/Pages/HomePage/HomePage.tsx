@@ -1,5 +1,4 @@
 import { VStack } from "@chakra-ui/react";
-import Navbar from "../../Components/HomePage/Navbar";
 import Header from "../../Components/HomePage/Header";
 import Hero from "../../Components/HomePage/Hero";
 import About from "../../Components/HomePage/About";
@@ -11,7 +10,7 @@ import Reels from "../../Components/HomePage/Reels";
 const HomePage = () => {
   return (
     <VStack align="stretch" dir="rtl">
-      <Navbar />
+      {/* <Navbar /> */}
       <Header />
       <Reels />
       <Hero />

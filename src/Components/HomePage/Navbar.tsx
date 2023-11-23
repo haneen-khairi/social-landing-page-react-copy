@@ -1,4 +1,4 @@
-import { Box, HStack, Spacer, Text } from "@chakra-ui/react";
+import { Box, HStack, Select, Spacer, Text } from "@chakra-ui/react";
 // import { BrandLogo } from "../../assets/icons";
 import { Link } from "react-router-dom";
 import Countdown from "react-countdown";
@@ -50,7 +50,13 @@ const Navbar = () => {
       justifyContent={{ base: "center", lg: "flex-start" }}
     >
       {/* <BrandLogo /> */}
-      <Text fontSize="30px" fontFamily="Alexandria" fontWeight="600">
+      <Text
+        as={Link}
+        to="/"
+        fontSize="30px"
+        fontFamily="Alexandria"
+        fontWeight="600"
+      >
         البوصلة
       </Text>
       <HStack
@@ -67,7 +73,7 @@ const Navbar = () => {
           lineHeight="2"
           onClick={() => scrollToSection("about")}
         >
-          <Link to="#">عن الإستطلاع</Link>
+          <Link to="/">عن الإستطلاع</Link>
         </Text>
         <Text
           borderBottom="3px solid transparent"
@@ -77,7 +83,7 @@ const Navbar = () => {
           lineHeight="2"
           onClick={() => scrollToSection("goals")}
         >
-          <Link to="#">أهداف الإستطلاع</Link>
+          <Link to="/">أهداف الإستطلاع</Link>
         </Text>
         <Text
           borderBottom="3px solid transparent"
@@ -87,11 +93,26 @@ const Navbar = () => {
           lineHeight="2"
           onClick={() => scrollToSection("sponsors")}
         >
-          <Link to="#">الداعمون الإعلاميون</Link>
+          <Link to="/">الداعمون الإعلاميون</Link>
+        </Text>
+        <Text
+          borderBottom="3px solid transparent"
+          _hover={{ color: "primary", borderColor: "primary" }}
+          cursor="pointer"
+          transition="0.3s"
+          lineHeight="2"
+          onClick={() => scrollToSection("sponsors")}
+        >
+          <Link to="/statistics">الإحصائيات</Link>
         </Text>
       </HStack>
       <Spacer />
       <Countdown date={targetDate} renderer={renderer} />
+      {/* Mulit Language Setup */}
+      <Box dir="ltr">
+        <Select placeholder="اللغة" size="sm" rounded="10px" />
+      </Box>
+      {/* Mulit Language Setup */}
     </HStack>
   );
 };

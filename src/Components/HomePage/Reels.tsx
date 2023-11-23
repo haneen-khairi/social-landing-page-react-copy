@@ -2,7 +2,6 @@ import { Box } from "@chakra-ui/react";
 import { useGetReels } from "../../hooks/useCore";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ReelItem from "./Reels/ReelItem";
-
 import "swiper/css";
 
 export default function Reels() {

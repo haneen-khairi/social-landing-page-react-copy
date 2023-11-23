@@ -1,3 +1,4 @@
+import CountryIntrest from "../entities/Core/CountryIntrest";
 import Reel from "../entities/Core/Reels";
 import RequestIntrest from "../entities/Core/RequestIntrest";
 import RequestVolunteer from "../entities/Core/RequestVolunteer";
@@ -11,6 +12,7 @@ const apiClient = new APIClient<WorkField>("/work-fields/");
 const apiStatisitcs = new APIClient<Statistics>("/statistics/");
 const apiSponsors = new APIClient<Sponsors>(`/sponsors/`);
 const apiReels = new APIClient<Sponsors>(`/reels/`);
+const apiCountryIntrest = new APIClient<RequestIntrest>(`/country-interests/`);
 const apiRequsetVolunteer = new APIClient<RequestVolunteer>(`/volunteer/`);
 const apiRequsetIntrest = new APIClient<RequestIntrest>(`/interest/`);
 
@@ -42,6 +44,14 @@ const useGetReels = () => {
   return useQuery<Reel[]>({
     queryKey: ["Reels"],
     queryFn: apiReels.get,
+    staleTime: 24 * 60 * 60 * 1000, //24h
+  });
+};
+
+const useCountryIntrest = () => {
+  return useQuery<CountryIntrest>({
+    queryKey: ["CountryIntrest"],
+    queryFn: apiCountryIntrest.get,
     staleTime: 24 * 60 * 60 * 1000, //24h
   });
 };
@@ -83,4 +93,5 @@ export {
   useRequestIntrest,
   useGetSponsors,
   useGetReels,
+  useCountryIntrest,
 };
