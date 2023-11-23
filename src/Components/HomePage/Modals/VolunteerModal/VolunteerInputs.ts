@@ -1,5 +1,6 @@
 type VolunteerInputs = {
   name: string;
+  country: number;
   email: string;
   phone_number: string;
   field_of_work: number[];

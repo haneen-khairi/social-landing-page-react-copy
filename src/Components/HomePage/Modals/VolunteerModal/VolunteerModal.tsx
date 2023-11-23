@@ -15,6 +15,7 @@ import {
 import { MdGroups } from "react-icons/md";
 import { BsArrowLeft } from "react-icons/bs";
 import {
+  useGetCountries,
   useGetWorkFields,
   useRequestVolunteer,
 } from "../../../../hooks/useCore";
@@ -54,6 +55,8 @@ function VolunteerModal({ isOpen, onClose }: Props) {
     reValidateMode: "onSubmit",
   });
   const { data } = useGetWorkFields();
+  const { data: dataCountries } = useGetCountries();
+
   const requestVolunteer = useRequestVolunteer();
 
   const onSubmit = (values: VolunteerInputs) => {
@@ -76,6 +79,12 @@ function VolunteerModal({ isOpen, onClose }: Props) {
   const handleSelectChange = (selected: Option[]) => {
     const arrayOfIds = selected.map((obj) => obj.id);
     setValue("field_of_work", arrayOfIds as never);
+  };
+
+
+  const handleSelectCountryChange = (selected: { name: string; id: number }) => {
+    console.log(selected.id, "selected.id");
+    setValue("country", selected.id as never);
   };
   return (
     <>
@@ -201,6 +210,33 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                     )}
                   </FormControl>
                 </VStack>
+
+                <VStack align="stretch" w="100%">
+                  <FormControl w="100%">
+                    <FormLabel
+                      fontFamily="Readex Pro"
+                      fontSize="14px"
+                      fontWeight="400"
+                      mb="12px"
+                      color="#374151"
+                    >
+                      الدولة
+                    </FormLabel>
+
+                    <MultiSelectArea
+                      option={dataCountries ? dataCountries?.data : []}
+                      inputName="country"
+                      placeholder="اختر دولة"
+                      onChange={(e) => handleSelectCountryChange(e)}
+                      isMulti={false}
+                    />
+                    {errors && errors.country && (
+                      <ErrorText>{errors.country.message} </ErrorText>
+                    )}
+                  </FormControl>
+                </VStack>
+
+
                 <VStack align="stretch" w="100%">
                   <FormControl w="100%">
                     <FormLabel
@@ -290,35 +326,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                     )}
                   </FormControl>
                 </VStack>
-                <VStack align="stretch" w="100%">
-                  <FormControl w="100%">
-                    <FormLabel
-                      fontFamily="Readex Pro"
-                      fontSize="14px"
-                      fontWeight="400"
-                      mb="12px"
-                      color="#374151"
-                    >
-                      عدد سنوات الخبرة
-                    </FormLabel>
-                    <Input
-                      type="text"
-                      w="100%"
-                      rounded="full"
-                      h="48px"
-                      borderColor="#E2E8F0"
-                      _focus={{
-                        boxShadow: "none",
-                        outline: "none",
-                        borderColor: "#E2E8F0",
-                      }}
-                      {...register("years_of_experience")}
-                    />
-                    {errors && errors.years_of_experience && (
-                      <ErrorText>{errors.years_of_experience.message} </ErrorText>
-                    )}
-                  </FormControl>
-                </VStack>
+
                 <VStack align="stretch" w="100%">
                   <FormControl w="100%">
                     <FormLabel

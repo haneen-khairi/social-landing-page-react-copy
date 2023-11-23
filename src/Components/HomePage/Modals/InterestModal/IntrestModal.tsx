@@ -46,7 +46,6 @@ function IntrestModal({ isOpen, onClose }: Props) {
   const { data } = useGetCountries();
 
   const handleSelectChange = (selected: { name: string; id: number }) => {
-    // const arrayOfIds = selected.map((obj) => obj.id);
     console.log(selected.id, "selected.id");
     setValue("country", selected.id as never);
   };
