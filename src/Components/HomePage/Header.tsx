@@ -50,8 +50,8 @@ const Header = () => {
     } else {
       // Render the countdown components
       return (
-        <HStack w="100%" display="flex" alignItems="center" justifyContent="space-between">
-          <HStack justifyContent="center" w="33%">
+        <HStack w="100%" display="flex" wrap="wrap" alignItems="center" justifyContent="space-between">
+          <HStack justifyContent="center" w={{ sm: "100%", md: "33.3%" }} >
             <Button
               bg="#194430 "
               rounded="full"
@@ -64,7 +64,7 @@ const Header = () => {
               مهتم
             </Button>
           </HStack>
-          <Box textAlign="center" >
+          <Box textAlign="center" w={{ sm: "100%", md: "33.3%" }} >
             <Text
               fontFamily="Alexandria"
               fontSize="15px"
@@ -133,7 +133,7 @@ const Header = () => {
               </Box>
             </HStack>
           </Box>
-          <HStack justifyContent="center" w="33%" >
+          <HStack justifyContent="center" w={{ sm: "100%", md: "33.3%" }} >
             <Button
               bg="#194430 "
               color="white"
