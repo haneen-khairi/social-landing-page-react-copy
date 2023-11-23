@@ -60,6 +60,7 @@ function Goals() {
       <VStack spacing={{ base: "50px", lg: "24px" }} align="stretch">
         {goals.map((item, index) => (
           <HStack
+          className="stack-hover"
             spacing="24px"
             key={index}
             flexDir={{ base: "column", lg: "row" }}
@@ -72,6 +73,7 @@ function Goals() {
               display="flex"
               justifyContent="center"
               alignItems="center"
+              className="icon-hover"
             >
               {item.icon}
             </Box>

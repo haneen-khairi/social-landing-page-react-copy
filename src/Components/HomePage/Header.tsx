@@ -10,7 +10,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import HeroImage from "../../assets/hero.png";
-
+import { ArrowBackIcon } from '@chakra-ui/icons';
 import VideoPlayer from "../VideoPlayer";
 import VolunteerModal from "./Modals/VolunteerModal/VolunteerModal";
 import { useGetStatistics } from "../../hooks/useCore";
@@ -50,21 +50,71 @@ const Header = () => {
     } else {
       // Render the countdown components
       return (
-        <HStack w="100%" display="flex" wrap="wrap" alignItems="center" justifyContent="space-between">
-          <HStack justifyContent="center" w={{ sm: "100%", md: "33.3%" }} >
-            <Button
-              bg="#194430 "
-              rounded="full"
-              color="white"
-              _hover={{ opacity: "0.8" }}
-              fontSize="20px"
-              p="20px 50px 26px"
-              onClick={() => onIOpen()}
+        <HStack w="100%" display="flex" className="wrap-responsive" alignItems="center" justifyContent="center" gap={5}>
+          <Box className="d-flex-center" justifyContent="center" w={{ sm: "100%", md: "100%" }} h="100%" >
+            <VStack
+              className="box-styles"
+              spacing="30px"
+              align="stretch"
+              p="16px"
+              rounded="8px"
+              textAlign="center"
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              justifyContent="center"
+              
             >
-              مهتم
-            </Button>
-          </HStack>
-          <Box textAlign="center" w={{ sm: "100%", md: "33.3%" }} >
+              <Box className="d-flex-center" justifyContent="center" w="100%">
+                <Button
+                  bgGradient='linear(to-l, #194430, #194564)'
+                  rounded="full"
+                  color="white"
+                  _hover={{ boxShadow: "1px 1px 10px #000" }}
+                  fontSize="29px"
+                  p="30px"
+                  onClick={() => onIOpen()}
+                  rightIcon={<ArrowBackIcon />}
+                  className="button-width"
+                >
+                  مهتم
+                </Button>
+              </Box>
+              <Box>
+                <Text
+                  fontSize="29px"
+                  fontWeight="800"
+                  w={{ base: "100%", lg: "428px" }}
+                  textAlign="center"
+                >
+                  سينتهي استطلاع الرأي بعد ثلاثين يوماً.
+                  <br />
+                  شارك في
+                  الاستطلاع وابدي اهتمامك الآن
+                </Text>
+              </Box>
+
+              <Text textAlign="center" fontSize="30px" fontWeight="700">
+                عدد المهتمين
+              </Text>
+
+              {!isLoading && (
+                <Text fontSize="70px" fontWeight={700} color="#5AA48A">
+                  {
+                    data?.interest_count
+                  }
+                </Text>
+              )}
+              {isLoading && (
+                <Box mx="auto">
+                  <CircularProgress isIndeterminate color="#5AA48A" />
+                </Box>
+              )}
+
+
+            </VStack>
+          </Box>
+          <Box className="d-flex-center" textAlign="center" justifyContent="center" w={{ sm: "100%", md: "100%" }} >
             <Text
               fontFamily="Alexandria"
               fontSize="15px"
@@ -73,42 +123,56 @@ const Header = () => {
             >
               باقي على الإستطلاع
             </Text>
-            <HStack dir="ltr">
+            <HStack dir="ltr" display="flex" justifyContent="space-between" >
               <Box textAlign="center">
                 <Box
                   bg="primary"
-                  p="4"
+                  p="2"
+                  ml={2}
+                  mr={2}
                   rounded="5px"
                   color="white"
                   fontWeight="700"
+                  fontSize={30}
+                  w="80px"
                 >
                   {days}
                 </Box>
                 <Text fontFamily="Alexandria">يوم</Text>
               </Box>
-              <Text fontSize="20px" pb="4">
+              <Text fontSize="20px"  ml={2}
+                  mr={2} pb="4">
                 :
               </Text>
               <Box textAlign="center">
                 <Box
                   bg="primary"
-                  p="4"
+                  p="2"
+                  ml={2}
+                  mr={2}
+                  fontSize={30}
                   rounded="5px"
                   color="white"
                   fontWeight="700"
+                  w="80px"
                 >
                   {hours}
                 </Box>
                 <Text fontFamily="Alexandria">ساعة</Text>
               </Box>
-              <Text fontSize="20px" pb="4">
+              <Text fontSize="20px" ml={2}
+                  mr={2} pb="4">
                 :
               </Text>
               <Box textAlign="center">
                 <Box
                   bg="primary"
-                  p="4"
+                  p="2"
+                  ml={2}
+                  mr={2}
+                  fontSize={30}
                   rounded="5px"
+                  w="80px"
                   color="white"
                   fontWeight="700"
                 >
@@ -116,36 +180,86 @@ const Header = () => {
                 </Box>
                 <Text fontFamily="Alexandria">دقيقة</Text>
               </Box>
-              {/* <Text fontSize="20px" pb="4">
-              :
-            </Text> */}
-              <Box textAlign="center">
-                {/* <Box
-                bg="primary"
-                p="4"
-                rounded="5px"
-                color="white"
-                fontWeight="700"
-              >
-                {seconds}
-              </Box>
-              <Text fontFamily="Alexandria">ثانية</Text> */}
-              </Box>
             </HStack>
-          </Box>
-          <HStack justifyContent="center" w={{ sm: "100%", md: "33.3%" }} >
-            <Button
-              bg="#194430 "
-              color="white"
-              rounded="full"
-              _hover={{ opacity: "0.8" }}
-              onClick={() => onVOpen()}
-              fontSize="20px"
-              p="20px 50px 26px"
+            <Box
+              bg="black"
+              w="100%"
+              h={{ base: "300px", lg: "350px" }}
+              position="relative"
+              rounded="8px"
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              _hover={{
+                ".circle": { bg: "primary", transition: "0.3s" },
+                ".icon": { color: "white", transition: "0.3s" },
+              }}
+              transition="0.3s"
+              cursor="pointer"
+              mt={4}
             >
-              تطوع الآن
-            </Button>
-          </HStack>
+
+              <VideoPlayer name="intro" thumbnail={HeroImage} url="" />
+            </Box>
+          </Box>
+          <Box className="d-flex-center" justifyContent="center" w={{ sm: "100%", md: "100%" }} >
+            <VStack
+              spacing="40px"
+              align="stretch"
+              p="16px"
+              rounded="8px"
+              display="flex"
+              flexDirection="column"
+              textAlign="center"
+              alignItems="center"
+              justifyContent="center"
+              className="box-styles2"
+            >
+              <Box className="d-flex-center" justifyContent="center" w="100%">
+                <Button
+                  bgGradient='linear(to-l, #194430, #194564)'
+                  className="button-width"
+                  color="white"
+                  rounded="full"
+                  _hover={{ boxShadow: "1px 1px 10px #000" }}
+                  onClick={() => onVOpen()}
+                  fontSize="29px"
+                  p="30px"
+                  rightIcon={<ArrowBackIcon />}
+                >
+                  تطوع الآن
+                </Button>
+              </Box>
+              <Text
+                fontSize="29px"
+                fontWeight="800"
+                w={{ base: "100%", lg: "428px" }}
+                textAlign="center"
+              >
+                هل أنت على استعداد للتطوع في حال تقرر إنشاء منظومة تواصل اجتماعي
+                عربي؟
+              </Text>
+
+              <Text textAlign="center" fontSize="30px" fontWeight="700">
+                عدد المتطوعين
+              </Text>
+
+              {!isLoading && (
+                <Text fontSize="70px" fontWeight={700} color="#5AA48A">
+                  {
+                    data?.volunteer_count
+                  }
+                </Text>
+              )}
+              {isLoading && (
+                <Box mx="auto">
+                  <CircularProgress isIndeterminate color="#5AA48A" />
+                </Box>
+              )}
+
+
+            </VStack>
+          </Box>
         </HStack>
       );
     }
@@ -156,7 +270,9 @@ const Header = () => {
     <>
       <VolunteerModal isOpen={isVOpen} onClose={onVClose} />
       <IntrestModal isOpen={isIOpen} onClose={onIClose} />
+
       <Box mt="30px" px={{ base: "20px", lg: "40px" }}>
+
         <VStack mb="24px">
           <Countdown date={targetDate} renderer={renderer} />
         </VStack>
@@ -168,121 +284,12 @@ const Header = () => {
           fontFamily="Readex Pro"
           color="black"
         >
-          <VStack
-            spacing="30px"
-            align="stretch"
-            p="16px"
-            rounded="8px"
-            textAlign="center"
-          >
-            <Box>
-              <Text
-                fontSize="18px"
-                fontWeight="400"
-                w={{ base: "100%", lg: "428px" }}
-                textAlign="center"
-              >
-                سينتهي استطلاع الرأي بعد ثلاثين يوماً.
-                <br />
-                شارك في
-                الاستطلاع وابدي اهتمامك الآن
-              </Text>
-            </Box>
-
-            <Text textAlign="center" fontSize="24px" fontWeight="700">
-              عدد المهتمين
-            </Text>
-
-            {!isLoading && (
-              <Text fontSize="50px" color="#5AA48A">
-                {
-                  data?.interest_count
-                  // .toString()
-                  // .padStart(8, "0")
-                  // .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                }
-              </Text>
-            )}
-            {isLoading && (
-              <Box mx="auto">
-                <CircularProgress isIndeterminate color="#5AA48A" />
-              </Box>
-            )}
 
 
-          </VStack>
-
-          <Box
-            bg="black"
-            w="100%"
-            h={{ base: "300px", lg: "350px" }}
-            position="relative"
-            rounded="8px"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            _hover={{
-              ".circle": { bg: "primary", transition: "0.3s" },
-              ".icon": { color: "white", transition: "0.3s" },
-            }}
-            transition="0.3s"
-            cursor="pointer"
-          >
-            <VideoPlayer name="intro" thumbnail={HeroImage} url="" />
-          </Box>
-          {/* 
-          <Center height="350px" display={{ base: "none", lg: "flex" }}>
-            <Divider
-              orientation="vertical"
-              borderColor="primary"
-              borderWidth="3px"
-              h="350px"
-              rounded="full"
-            />
-          </Center>
-          <Center w="100%" display={{ base: "flex", lg: "none" }}>
-            <Divider borderColor="primary" borderWidth="3px" rounded="full" />
-          </Center> */}
-
-          <VStack
-            spacing="40px"
-            align="stretch"
-            p="16px"
-            rounded="8px"
-            textAlign="center"
-          >
-            <Text
-              fontSize="18px"
-              fontWeight="400"
-              w={{ base: "100%", lg: "428px" }}
-              textAlign="center"
-            >
-              هل أنت على استعداد للتطوع في حال تقرر إنشاء منظومة تواصل اجتماعي
-              عربي؟
-            </Text>
-
-            <Text textAlign="center" fontSize="24px" fontWeight="700">
-              عدد المتطوعين
-            </Text>
-
-            {!isLoading && (
-              <Text fontSize="50px" color="#5AA48A">
-                {
-                  data?.volunteer_count
-                  // .toString()
-                  // .padStart(5, "0")
-                  // .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                }
-              </Text>
-            )}
-            {isLoading && (
-              <Box mx="auto">
-                <CircularProgress isIndeterminate color="#5AA48A" />
-              </Box>
-            )}
 
 
-          </VStack>
+
+
         </HStack>
       </Box>
     </>

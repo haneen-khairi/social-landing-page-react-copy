@@ -11,6 +11,7 @@ import {
   Text,
   VStack,
   useDisclosure,
+  Alert, AlertIcon
 } from "@chakra-ui/react";
 import { MdEmojiPeople, MdGroups } from "react-icons/md";
 import { BsArrowLeft } from "react-icons/bs";
@@ -21,7 +22,7 @@ import ErrorText from "../../../ErrorText";
 import IntrestInputs from "./IntrestInputs";
 import IntrestSchema from "./IntrestSchema";
 import MultiSelectArea from "../../../MultiSelectArea/MultiSelectArea";
-
+import React, { useState } from 'react';
 interface Props {
   isOpen: boolean;
   onClose: () => void;
@@ -67,7 +68,17 @@ function IntrestModal({ isOpen, onClose }: Props) {
         onClose();
       });
   };
+  const [copySuccess, setCopySuccess] = useState(false);
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText('انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك. شارك بالإستطلاع الآن www.albusalah.com أبدي اهتمامك');
+    setCopySuccess(true);
+
+    // Hide the message after 3 seconds (adjust as needed)
+    setTimeout(() => {
+      setCopySuccess(false);
+    }, 3000);
+  };
   return (
     <>
       <Modal blockScrollOnMount={true} isOpen={isIOpen} onClose={onIClose}>
@@ -122,7 +133,46 @@ function IntrestModal({ isOpen, onClose }: Props) {
                 <BsArrowLeft />
               </HStack>
             </Button>
+            <Text
+              mt={4}
+              fontFamily="Readex Pro"
+              fontSize="16px"
+              fontWeight="400"
+              textAlign="center"
+              color="#374151"
+            >
+        
 
+              <Text
+                as="button"
+                onClick={copyToClipboard}
+                borderBottom="3px solid transparent"
+                _hover={{ color: "primary", borderColor: "primary" }}
+                cursor="pointer"
+                transition="0.3s"
+                lineHeight="2"
+                color="green"
+              > 
+                 شارك الآن
+              </Text>
+   
+            </Text>
+            {copySuccess && (
+        <Alert
+          status="success"
+          variant="subtle"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+          textAlign="center"
+          color="green"
+        >
+          <AlertIcon boxSize="4" />
+          انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك. شارك بالإستطلاع الآن 
+          www.albusalah.com 
+          أبدي اهتمامك
+        </Alert>
+            )}
           </VStack>
 
         </ModalContent>

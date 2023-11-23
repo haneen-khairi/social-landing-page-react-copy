@@ -12,6 +12,11 @@ const Navbar = () => {
       });
     }
   };
+  const changeLanguage = (language: string) => {
+    // Implement language change logic here
+    // You can use a state management solution or other mechanisms
+    console.log(`Language changed to ${language}`);
+  };
   return (
     <HStack
       p="24px 40px 24px 40px"
@@ -76,12 +81,60 @@ const Navbar = () => {
         >
           <Link to="/statistics">الإحصائيات</Link>
         </Text>
+        
       </HStack>
       <Spacer />
 
       {/* Mulit Language Setup */}
       <Box dir="ltr">
-        <Select placeholder="اللغة" size="sm" rounded="10px" />
+      <Text
+      ml={1} mr={1}
+          as="button"
+          onClick={() => changeLanguage("arabic")}
+          borderBottom="3px solid transparent"
+          _hover={{ color: "primary", borderColor: "primary" }}
+          cursor="pointer"
+          transition="0.3s"
+          lineHeight="2"
+        >
+          العربية
+        </Text>
+        <Text
+        ml={1} mr={1}
+          as="button"
+          onClick={() => changeLanguage("english")}
+          borderBottom="3px solid transparent"
+          _hover={{ color: "primary", borderColor: "primary" }}
+          cursor="pointer"
+          transition="0.3s"
+          lineHeight="2"
+        >
+          English
+        </Text>
+        <Text
+        ml={1} mr={1}
+          as="button"
+          onClick={() => changeLanguage("spanish")}
+          borderBottom="3px solid transparent"
+          _hover={{ color: "primary", borderColor: "primary" }}
+          cursor="pointer"
+          transition="0.3s"
+          lineHeight="2"
+        >
+          Español
+        </Text>
+        <Text
+          ml={1} mr={1}
+          as="button"
+          onClick={() => changeLanguage("french")}
+          borderBottom="3px solid transparent"
+          _hover={{ color: "primary", borderColor: "primary" }}
+          cursor="pointer"
+          transition="0.3s"
+          lineHeight="2"
+        >
+          Français
+        </Text>
       </Box>
       {/* Mulit Language Setup */}
     </HStack>

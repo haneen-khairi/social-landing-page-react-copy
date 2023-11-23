@@ -71,7 +71,7 @@ const VideoPlayer: React.FC<Props> = ({ url, name, thumbnail }: Props) => {
         title={name}
         src={url}
         allowFullScreen
-        allow="autoplay"
+        allow="autoplay" 
       />
     </Box>
   );
@@ -93,6 +93,7 @@ const VideoPlayer: React.FC<Props> = ({ url, name, thumbnail }: Props) => {
       justifyContent="center"
       alignItems="center"
       cursor="auto"
+      
     ></Box>
   );
 };

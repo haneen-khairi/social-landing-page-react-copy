@@ -16,8 +16,8 @@ export default function Reels() {
         navigation={true}
         modules={[Navigation]}>
         {data?.map((item, index) => (
-          <SwiperSlide key={index}>
-            <ReelItem reel={item} reels={data} />
+          <SwiperSlide key={index} className="slide-reels">
+            <ReelItem  reel={item} reels={data}  />
           </SwiperSlide>
         ))}
       </Swiper>

@@ -5,10 +5,13 @@ import {
   Text,
   VStack,
   useDisclosure,
+
 } from "@chakra-ui/react";
 import ChartImage from "../../assets/chart.png";
 import VolunteerModal from "./Modals/VolunteerModal/VolunteerModal";
 import IntrestModal from "./Modals/InterestModal/IntrestModal";
+
+
 
 const Hero = () => {
   const {
@@ -65,6 +68,7 @@ const Hero = () => {
               color="white"
               _hover={{ opacity: "0.8" }}
               onClick={() => onIOpen()}
+            
             >
               مهتم
             </Button>
@@ -74,7 +78,9 @@ const Hero = () => {
               rounded="full"
               _hover={{ opacity: "0.8" }}
               onClick={() => onVOpen()}
+             
             >
+              
               تطوع الآن
             </Button>
           </HStack>
