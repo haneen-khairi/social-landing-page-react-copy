@@ -23,7 +23,7 @@ const Navbar = () => {
         <Box px="3" bg="#FFBD38" rounded="20px" color="white">
           <Text fontFamily="Alexandria" fontSize="18px">
             باقي على الإستطلاع{" "}
-            <Text as="span" color="#A538FF" fontSize="35px">
+            <Text as="span" color="#FF594B" fontSize="35px">
               {days}
             </Text>{" "}
             يوم
