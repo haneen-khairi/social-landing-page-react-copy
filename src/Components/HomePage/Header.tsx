@@ -1,9 +1,9 @@
 import {
   Box,
   Button,
-  Center,
+  // Center,
   CircularProgress,
-  Divider,
+  // Divider,
   HStack,
   Text,
   VStack,
@@ -15,8 +15,69 @@ import VideoPlayer from "../VideoPlayer";
 import VolunteerModal from "./Modals/VolunteerModal/VolunteerModal";
 import { useGetStatistics } from "../../hooks/useCore";
 import IntrestModal from "./Modals/InterestModal/IntrestModal";
+import Countdown from "react-countdown";
+
+interface CountdownRendererProps {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  completed: boolean;
+}
 
 const Header = () => {
+  const targetDate = new Date("December 24, 2023 23:59:59");
+  const renderer: React.FC<CountdownRendererProps> = ({
+    days,
+    hours,
+    minutes,
+    completed,
+  }) => {
+    if (completed) {
+      // Render something when the countdown is complete
+      return <span>اكتمل الاستطلاع</span>;
+    } else {
+      // Render the countdown components
+      return (
+        <Box textAlign="center">
+          <Text
+            fontFamily="Alexandria"
+            fontSize="15px"
+            fontWeight="600"
+            mb="10px"
+          >
+            باقي على الإستطلاع
+          </Text>
+          <HStack dir="ltr">
+            <Box textAlign="center">
+              <Box bg="primary" p="4" rounded="5px" color="white">
+                {days}
+              </Box>
+              <Text fontFamily="Alexandria">يوم</Text>
+            </Box>
+            <Text fontSize="20px" pb="4">
+              :
+            </Text>
+            <Box textAlign="center">
+              <Box bg="primary" p="4" rounded="5px" color="white">
+                {hours}
+              </Box>
+              <Text fontFamily="Alexandria">ساعة</Text>
+            </Box>
+            <Text fontSize="20px" pb="4">
+              :
+            </Text>
+            <Box textAlign="center">
+              <Box bg="primary" p="4" rounded="5px" color="white">
+                {minutes}
+              </Box>
+              <Text fontFamily="Alexandria">دقيقة</Text>
+            </Box>
+          </HStack>
+        </Box>
+      );
+    }
+  };
   const {
     isOpen: isVOpen,
     onOpen: onVOpen,
@@ -33,6 +94,9 @@ const Header = () => {
       <VolunteerModal isOpen={isVOpen} onClose={onVClose} />
       <IntrestModal isOpen={isIOpen} onClose={onIClose} />
       <Box mt="30px" px={{ base: "20px", lg: "40px" }}>
+        <VStack mb="24px">
+          <Countdown date={targetDate} renderer={renderer} />
+        </VStack>
         <HStack
           flexDir={{ base: "column", lg: "row" }}
           spacing="12px"
@@ -41,25 +105,6 @@ const Header = () => {
           fontFamily="Readex Pro"
           color="black"
         >
-          <Box
-            bg="black"
-            w="100%"
-            h={{ base: "300px", lg: "350px" }}
-            position="relative"
-            rounded="8px"
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            _hover={{
-              ".circle": { bg: "primary", transition: "0.3s" },
-              ".icon": { color: "white", transition: "0.3s" },
-            }}
-            transition="0.3s"
-            cursor="pointer"
-          >
-            <VideoPlayer name="intro" thumbnail={HeroImage} url="" />
-          </Box>
-
           <VStack
             spacing="30px"
             align="stretch"
@@ -112,6 +157,26 @@ const Header = () => {
               </Button>
             </HStack>
           </VStack>
+
+          <Box
+            bg="black"
+            w="100%"
+            h={{ base: "300px", lg: "350px" }}
+            position="relative"
+            rounded="8px"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            _hover={{
+              ".circle": { bg: "primary", transition: "0.3s" },
+              ".icon": { color: "white", transition: "0.3s" },
+            }}
+            transition="0.3s"
+            cursor="pointer"
+          >
+            <VideoPlayer name="intro" thumbnail={HeroImage} url="" />
+          </Box>
+          {/* 
           <Center height="350px" display={{ base: "none", lg: "flex" }}>
             <Divider
               orientation="vertical"
@@ -123,7 +188,7 @@ const Header = () => {
           </Center>
           <Center w="100%" display={{ base: "flex", lg: "none" }}>
             <Divider borderColor="primary" borderWidth="3px" rounded="full" />
-          </Center>
+          </Center> */}
 
           <VStack
             spacing="40px"
