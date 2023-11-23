@@ -85,12 +85,17 @@ function VolunteerModal({ isOpen, onClose }: Props) {
       <ModalOverlay />
 
       <ModalContent
-        rounded="6px"
+        rounded="30px"
         dir="ltr"
         maxW="448px"
         fontFamily="Noto Kufi Arabic"
       >
-        <ModalCloseButton position="absolute" left="8px" top="8px" />
+        <ModalCloseButton
+          position="absolute"
+          left="20px"
+          top="20px"
+          rounded="full"
+        />
 
         <VStack px="40px" py="40px" align="stretch" dir="rtl">
           <VStack>
