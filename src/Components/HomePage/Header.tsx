@@ -57,6 +57,8 @@ const Header = () => {
               rounded="full"
               color="white"
               _hover={{ opacity: "0.8" }}
+              fontSize="20px"
+              p="20px 50px 26px"
               onClick={() => onIOpen()}
             >
               مهتم
@@ -138,6 +140,8 @@ const Header = () => {
               rounded="full"
               _hover={{ opacity: "0.8" }}
               onClick={() => onVOpen()}
+              fontSize="20px"
+              p="20px 50px 26px"
             >
               تطوع الآن
             </Button>
