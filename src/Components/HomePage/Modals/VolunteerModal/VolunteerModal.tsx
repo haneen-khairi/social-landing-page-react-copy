@@ -29,6 +29,7 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
 }
+
 type Option = {
   id: number;
   name: string;
@@ -66,15 +67,6 @@ function VolunteerModal({ isOpen, onClose }: Props) {
         years_of_experience: Number(values.years_of_experience),
       })
       .then(() => {
-        // toast({
-        //   title: "شكراً لك",
-        //   description:
-        //     "في حال الوصول الى العدد المنشود من المهتمين بإطلاق منظومة تواصل إجتماعي عربي قد يتم الاستعانة بعدد من المتطوعين لبناء هذه المنظومة، وحينها سيتم التواصل معك.",
-        //   status: "success",
-        //   duration: 5000,
-        //   isClosable: true,
-        //   position: "bottom-right",
-        // });
         onVOpen();
         reset();
         onClose();

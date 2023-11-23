@@ -1,4 +1,5 @@
 import CountryIntrest from "../entities/Core/CountryIntrest";
+import Countries from "../entities/Core/Countries";
 import Reel from "../entities/Core/Reels";
 import RequestIntrest from "../entities/Core/RequestIntrest";
 import RequestVolunteer from "../entities/Core/RequestVolunteer";
@@ -9,6 +10,7 @@ import APIClient from "../services/api-client";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const apiClient = new APIClient<WorkField>("/work-fields/");
+const apiCountries = new APIClient<WorkField>("/countries/");
 const apiStatisitcs = new APIClient<Statistics>("/statistics/");
 const apiSponsors = new APIClient<Sponsors>(`/sponsors/`);
 const apiReels = new APIClient<Sponsors>(`/reels/`);
@@ -20,6 +22,14 @@ const useGetWorkFields = () => {
   return useQuery<WorkField[]>({
     queryKey: ["WorkFields"],
     queryFn: apiClient.getAll,
+    staleTime: 24 * 60 * 60 * 1000, //24h
+  });
+};
+
+const useGetCountries = () => {
+  return useQuery<Countries>({
+    queryKey: ["getCountries"],
+    queryFn: apiCountries.get,
     staleTime: 24 * 60 * 60 * 1000, //24h
   });
 };
@@ -88,6 +98,7 @@ const useRequestIntrest = () => {
 
 export {
   useGetWorkFields,
+  useGetCountries,
   useGetStatistics,
   useRequestVolunteer,
   useRequestIntrest,

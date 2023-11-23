@@ -14,31 +14,27 @@ import {
 } from "@chakra-ui/react";
 import { MdEmojiPeople, MdGroups } from "react-icons/md";
 import { BsArrowLeft } from "react-icons/bs";
-import { useRequestIntrest } from "../../../../hooks/useCore";
+import { useGetCountries, useRequestIntrest } from "../../../../hooks/useCore";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import ErrorText from "../../../ErrorText";
 import IntrestInputs from "./IntrestInputs";
 import IntrestSchema from "./IntrestSchema";
+import MultiSelectArea from "../../../MultiSelectArea/MultiSelectArea";
 
 interface Props {
   isOpen: boolean;
   onClose: () => void;
 }
 
+
+
 function IntrestModal({ isOpen, onClose }: Props) {
-  const {
-    isOpen: isIOpen,
-    onOpen: onIOpen,
-    onClose: onIClose,
-  } = useDisclosure();
-  const requestIntrest = useRequestIntrest();
-
-
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
     reset,
   } = useForm({
     defaultValues: {},
@@ -47,6 +43,22 @@ function IntrestModal({ isOpen, onClose }: Props) {
     reValidateMode: "onSubmit",
   });
 
+  const { data } = useGetCountries();
+
+  const handleSelectChange = (selected: { name: string; id: number }) => {
+    // const arrayOfIds = selected.map((obj) => obj.id);
+    console.log(selected.id, "selected.id");
+    setValue("country", selected.id as never);
+  };
+
+  const {
+    isOpen: isIOpen,
+    onOpen: onIOpen,
+    onClose: onIClose,
+  } = useDisclosure();
+
+  const requestIntrest = useRequestIntrest();
+
   const onSubmit = (values: IntrestInputs) => {
     requestIntrest
       .mutateAsync({
@@ -54,15 +66,6 @@ function IntrestModal({ isOpen, onClose }: Props) {
         name: values.name,
       })
       .then(() => {
-        // toast({
-        //   title: "شكرا لاهتمامك",
-        //   description:
-        //     "سيتم اعلامك حين اكتمال العدد المطلوب يمكنك العودة لهذه الصفحة في اي وقت للاطلاع على اخر المستجدات",
-        //   status: "success",
-        //   duration: 5000,
-        //   isClosable: true,
-        //   position: "bottom-right",
-        // });
         onIOpen();
         reset();
         onClose();
@@ -220,6 +223,30 @@ function IntrestModal({ isOpen, onClose }: Props) {
                     />
                     {errors && errors.email && (
                       <ErrorText>{errors.email.message} </ErrorText>
+                    )}
+                  </FormControl>
+                </VStack>
+                <VStack align="stretch" w="100%">
+                  <FormControl w="100%">
+                    <FormLabel
+                      fontFamily="Readex Pro"
+                      fontSize="14px"
+                      fontWeight="400"
+                      mb="12px"
+                      color="#374151"
+                    >
+                      الدولة
+                    </FormLabel>
+
+                    <MultiSelectArea
+                      option={data ? data?.data : []}
+                      inputName="countries"
+                      placeholder="اختر دولة"
+                      onChange={(e) => handleSelectChange(e)}
+                      isMulti={false}
+                    />
+                    {errors && errors.country && (
+                      <ErrorText>{errors.country.message} </ErrorText>
                     )}
                   </FormControl>
                 </VStack>

@@ -3,9 +3,11 @@ import "./style.css";
 interface Props {
   placeholder: string;
   option: Option[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   defaultValue?: any;
   inputName: string;
   isMulti?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onChange: (e: any) => void;
 }
 
