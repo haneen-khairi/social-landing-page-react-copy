@@ -61,11 +61,7 @@ function IntrestModal({ isOpen, onClose }: Props) {
 
   const onSubmit = (values: IntrestInputs) => {
     requestIntrest
-      .mutateAsync({
-        email: values.email,
-        name: values.name,
-        country: values.country,
-      })
+      .mutateAsync(values)
       .then(() => {
         onIOpen();
         reset();
