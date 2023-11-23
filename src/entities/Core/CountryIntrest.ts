@@ -1,6 +1,9 @@
 export default interface CountryIntrest {
   data: {
-    name: string;
-    interests_count: number;
-  }[];
+    total_interests_count: number;
+    countries: {
+      name: string;
+      interests_count: number;
+    }[];
+  };
 }

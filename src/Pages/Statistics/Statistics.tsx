@@ -1,17 +1,17 @@
 import { Box, HStack, Progress, Text, VStack } from "@chakra-ui/react";
-import { useCountryIntrest, useGetStatistics } from "../../hooks/useCore";
+import { useCountryIntrest } from "../../hooks/useCore";
 
 const Statistics = () => {
   const { data, isLoading } = useCountryIntrest();
-  const { data: Statistics } = useGetStatistics();
+
   return (
     <Box p="80px">
       <Text fontFamily="Alexandria" fontSize="35px" mb="20px" fontWeight="500">
-        عدد المهتمين حسب الدول ({Statistics?.interest_count})
+        عدد المهتمين حسب الدول ({data?.data.total_interests_count})
       </Text>
       <VStack spacing="10px" align="stretch">
         {!isLoading &&
-          data?.data?.map(
+          data?.data.countries?.map(
             (item, index) =>
               item.interests_count && (
                 <Box key={index}>
@@ -22,7 +22,7 @@ const Statistics = () => {
 
                   <Progress
                     value={item.interests_count}
-                    max={Statistics?.interest_count}
+                    max={data.data.total_interests_count}
                     height="35px"
                     rounded="lg"
                     colorScheme="green"
