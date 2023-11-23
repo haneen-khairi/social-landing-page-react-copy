@@ -61,14 +61,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
 
   const onSubmit = (values: VolunteerInputs) => {
     requestVolunteer
-      .mutateAsync({
-        email: values.email,
-        name: values.name,
-        field_of_work: values.field_of_work,
-        phone_number: values.phone_number,
-        volunteer_hours: Number(values.volunteer_hours),
-        years_of_experience: Number(values.years_of_experience),
-      })
+      .mutateAsync(values)
       .then(() => {
         onVOpen();
         reset();
@@ -266,6 +259,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                     )}
                   </FormControl>
                 </VStack>
+
                 <VStack align="stretch" w="100%">
                   <FormControl w="100%">
                     <FormLabel
@@ -275,43 +269,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                       mb="12px"
                       color="#374151"
                     >
-                      رقم الهاتف
-                    </FormLabel>
-                    <Input
-                      type="text"
-                      w="100%"
-                      rounded="full"
-                      h="48px"
-                      borderColor="#E2E8F0"
-                      _focus={{
-                        boxShadow: "none",
-                        outline: "none",
-                        borderColor: "#E2E8F0",
-                      }}
-                      {...register("phone_number")}
-                      pattern="[0-9+]*"
-                      onInput={(e) => {
-                        const input = e.target as HTMLInputElement;
-                        input.value = input.value.replace(/[^0-9+]/g, "");
-                      }}
-                      dir="ltr"
-                      textAlign="right"
-                    />
-                    {errors && errors.phone_number && (
-                      <ErrorText>{errors.phone_number.message} </ErrorText>
-                    )}
-                  </FormControl>
-                </VStack>
-                <VStack align="stretch" w="100%">
-                  <FormControl w="100%">
-                    <FormLabel
-                      fontFamily="Readex Pro"
-                      fontSize="14px"
-                      fontWeight="400"
-                      mb="12px"
-                      color="#374151"
-                    >
-                      طبيعة العمل
+                      مجال التخصص
                     </FormLabel>
 
                     <MultiSelectArea
@@ -327,35 +285,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                   </FormControl>
                 </VStack>
 
-                <VStack align="stretch" w="100%">
-                  <FormControl w="100%">
-                    <FormLabel
-                      fontFamily="Readex Pro"
-                      fontSize="14px"
-                      fontWeight="400"
-                      mb="12px"
-                      color="#374151"
-                    >
-                      عدد الساعات التطوعية للمشروع
-                    </FormLabel>
-                    <Input
-                      type="number"
-                      w="100%"
-                      rounded="full"
-                      h="48px"
-                      borderColor="#E2E8F0"
-                      _focus={{
-                        boxShadow: "none",
-                        outline: "none",
-                        borderColor: "#E2E8F0",
-                      }}
-                      {...register("volunteer_hours")}
-                    />
-                    {errors && errors.volunteer_hours && (
-                      <ErrorText>{errors.volunteer_hours.message} </ErrorText>
-                    )}
-                  </FormControl>
-                </VStack>
+
                 <Button
                   rounded="full"
                   h="48px"
