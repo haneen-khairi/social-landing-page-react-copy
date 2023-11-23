@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   FormControl,
   FormLabel,
@@ -41,6 +42,12 @@ function VolunteerModal({ isOpen, onClose }: Props) {
     isOpen: isVOpen,
     onOpen: onVOpen,
     onClose: onVClose,
+  } = useDisclosure();
+
+  const {
+    isOpen: isTermsOpen,
+    onOpen: onTermsOpen,
+    onClose: onTermsClose,
   } = useDisclosure();
   const {
     register,
@@ -138,7 +145,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
         </ModalContent>
       </Modal>
 
-      <Modal blockScrollOnMount={true} isOpen={isOpen} onClose={onClose}>
+      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
 
         <ModalContent
@@ -285,6 +292,17 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                   </FormControl>
                 </VStack>
 
+                <VStack align="stretch" w="100%">
+                  <Box onClick={() => onTermsOpen()}
+                    color="#205F45"
+                    fontFamily="Readex Pro"
+                    fontWeight="500"
+                    fontSize="16px"
+                    cursor="pointer"
+                  >
+                    سياسة الخصوية
+                  </Box>
+                </VStack>
 
                 <Button
                   rounded="full"
@@ -312,6 +330,101 @@ function VolunteerModal({ isOpen, onClose }: Props) {
           </VStack>
         </ModalContent>
       </Modal>
+
+
+      {/* model terms */}
+      <Modal blockScrollOnMount={false} isOpen={isTermsOpen} onClose={onTermsClose}>
+        <ModalOverlay />
+
+        <ModalContent
+          rounded="6px"
+          dir="ltr"
+          maxW="448px"
+          fontFamily="Noto Kufi Arabic"
+        >
+          <ModalCloseButton position="absolute" left="8px" top="8px" />
+
+          <VStack px="40px" py="40px" align="stretch" dir="rtl">
+            <VStack>
+              {/* <MdGroups size="40px" /> */}
+              <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
+                سياسة الخصوصية
+              </Text>
+              <Text
+                fontFamily="Readex Pro"
+                fontSize="16px"
+                fontWeight="400"
+                textAlign="center"
+                color="#374151"
+              >
+
+                سياسة الخصوصية
+                نشكرك على زيارتك لموقعنا الإلكترونيwww.albusalah.com
+                .   والمشاركة في استطلاعات الرأي
+                .      نحن نلتزم بحماية خصوصيتك وسرية معلوماتك الشخصية
+                يرجى قراءة البنود التالية لفهمكيفية جمعناواستخدامناوحمايتنا
+                لمعلوماتك الشخصية التي نجمعها
+                1.       نقوم بجمع معلومات محددة عند استخدامك لموقعنا أو
+                .خدماتنا هذه المعلومات قد تشمل الاسم، البريد الإلكتروني،
+                .   ومعلومات أخرى ذات صلة
+                2.    : استخدام المعلومات نستخدم المعلومات الشخصية التي
+                .    نجمعها لتحسين خدماتنا وتجربتككمستخدم نحن لا نشارك
+                .       هذه المعلومات مع أطراف ثالثة دون موافقتك الصريحة
+                3.      : حماية المعلومات نحن نتخذ إجراءات أمان ملائمة لحماية
+                معلوماتك الشخصية من الوصول غير المصرح به أو
+                .    الاستخدام أو التدمير أو التعديل ومع ذلك، يجب عليك أيضOًا
+                .      اتخاذ الخطوات اللازمة للحفاظ على سرية معلوماتك
+                4.   استخدام ملفات تعريف الارتباط(Cookies  : )قد نستخدم
+                .      ملفات تعريف الارتباط لتحسين تجربتك على موقعنا يمكنك
+                تعطيل ملفات تعريف الارتباط في إعدادات متصفحك إذا
+                .    كنت لا ترغب في استخدامها
+                5.     :   روابط لمواقع الطرف الثالث قد نقدم روابط إلى مواقع
+                . الويب الخارجية لا يمكننا التحكم في سياسات الخصوصية أو
+                محتوىهذه المواقع ونشجعك على قراءة سياسات
+                .  الخصوصية الخاصة بهم
+                6.     :  تحديثات لسياسة الخصوصية قد نقوم بتحديثهذه السياسة
+                . بشكل دوري يرجى مراجعةهذه الصفحة بانتظام لمعرفة
+                .    أحدث المعلومات حول سياساتنا الخصوصية
+                باستخدامك لموقعنا، فإنك توافق على جمعواستخدام وحماية
+                .    معلوماتك الشخصيةوفقOا لهذه السياسة
+                إذا كان لديك أي أسئلة أو استفسارات حول سياسة الخصوصية،
+                :   يرجى الاتصال بنا عبرinfo@albusalah.com
+                :  تاريخ آخر تحديث الأربعاء،  22   تشرين   الثاني،  2023  .
+                .    نشكر
+
+              </Text>
+            </VStack>
+
+            <Button
+              rounded="full"
+              h="48px"
+              bgGradient="linear(to-r, #282828, #205F45)"
+              _hover={{
+                bgGradient: "linear(to-r, #282828, #205F45)",
+              }}
+              color="white"
+              type="button"
+              mt="30px"
+              onClick={() => onTermsClose()}
+            >
+              <HStack justifyContent="space-between" w="100%">
+                <Text
+                  fontFamily="Readex Pro"
+                  fontWeight="500"
+                  fontSize="16px"
+                >
+                  إغلاق
+                </Text>
+                <BsArrowLeft />
+              </HStack>
+            </Button>
+
+          </VStack>
+
+        </ModalContent>
+      </Modal>
+      {/* model terms */}
+
     </>
   );
 }
