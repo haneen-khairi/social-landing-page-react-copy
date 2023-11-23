@@ -26,92 +26,6 @@ interface CountdownRendererProps {
 }
 
 const Header = () => {
-  const targetDate = new Date("December 24, 2023 23:59:59");
-  const renderer: React.FC<CountdownRendererProps> = ({
-    days,
-    hours,
-    minutes,
-    seconds,
-    completed,
-  }) => {
-    if (completed) {
-      // Render something when the countdown is complete
-      return <span>اكتمل الاستطلاع</span>;
-    } else {
-      // Render the countdown components
-      return (
-        <Box textAlign="center">
-          <Text
-            fontFamily="Alexandria"
-            fontSize="15px"
-            fontWeight="600"
-            mb="10px"
-          >
-            باقي على الإستطلاع
-          </Text>
-          <HStack dir="ltr">
-            <Box textAlign="center">
-              <Box
-                bg="primary"
-                p="4"
-                rounded="5px"
-                color="white"
-                fontWeight="700"
-              >
-                {days}
-              </Box>
-              <Text fontFamily="Alexandria">يوم</Text>
-            </Box>
-            <Text fontSize="20px" pb="4">
-              :
-            </Text>
-            <Box textAlign="center">
-              <Box
-                bg="primary"
-                p="4"
-                rounded="5px"
-                color="white"
-                fontWeight="700"
-              >
-                {hours}
-              </Box>
-              <Text fontFamily="Alexandria">ساعة</Text>
-            </Box>
-            <Text fontSize="20px" pb="4">
-              :
-            </Text>
-            <Box textAlign="center">
-              <Box
-                bg="primary"
-                p="4"
-                rounded="5px"
-                color="white"
-                fontWeight="700"
-              >
-                {minutes}
-              </Box>
-              <Text fontFamily="Alexandria">دقيقة</Text>
-            </Box>
-            <Text fontSize="20px" pb="4">
-              :
-            </Text>
-            <Box textAlign="center">
-              <Box
-                bg="primary"
-                p="4"
-                rounded="5px"
-                color="white"
-                fontWeight="700"
-              >
-                {seconds}
-              </Box>
-              <Text fontFamily="Alexandria">ثانية</Text>
-            </Box>
-          </HStack>
-        </Box>
-      );
-    }
-  };
   const {
     isOpen: isVOpen,
     onOpen: onVOpen,
@@ -122,6 +36,117 @@ const Header = () => {
     onOpen: onIOpen,
     onClose: onIClose,
   } = useDisclosure();
+  const targetDate = new Date("December 24, 2023 23:59:59");
+  const renderer: React.FC<CountdownRendererProps> = ({
+    days,
+    hours,
+    minutes,
+    // seconds,
+    completed,
+  }) => {
+    if (completed) {
+      // Render something when the countdown is complete
+      return <span>اكتمل الاستطلاع</span>;
+    } else {
+      // Render the countdown components
+      return (
+        <HStack w="100%" display="flex" alignItems="center" justifyContent="space-between">
+          <HStack justifyContent="center" w="33%">
+            <Button
+              bg="#194430 "
+              rounded="full"
+              color="white"
+              _hover={{ opacity: "0.8" }}
+              onClick={() => onIOpen()}
+            >
+              مهتم
+            </Button>
+          </HStack>
+          <Box textAlign="center" >
+            <Text
+              fontFamily="Alexandria"
+              fontSize="15px"
+              fontWeight="600"
+              mb="10px"
+            >
+              باقي على الإستطلاع
+            </Text>
+            <HStack dir="ltr">
+              <Box textAlign="center">
+                <Box
+                  bg="primary"
+                  p="4"
+                  rounded="5px"
+                  color="white"
+                  fontWeight="700"
+                >
+                  {days}
+                </Box>
+                <Text fontFamily="Alexandria">يوم</Text>
+              </Box>
+              <Text fontSize="20px" pb="4">
+                :
+              </Text>
+              <Box textAlign="center">
+                <Box
+                  bg="primary"
+                  p="4"
+                  rounded="5px"
+                  color="white"
+                  fontWeight="700"
+                >
+                  {hours}
+                </Box>
+                <Text fontFamily="Alexandria">ساعة</Text>
+              </Box>
+              <Text fontSize="20px" pb="4">
+                :
+              </Text>
+              <Box textAlign="center">
+                <Box
+                  bg="primary"
+                  p="4"
+                  rounded="5px"
+                  color="white"
+                  fontWeight="700"
+                >
+                  {minutes}
+                </Box>
+                <Text fontFamily="Alexandria">دقيقة</Text>
+              </Box>
+              {/* <Text fontSize="20px" pb="4">
+              :
+            </Text> */}
+              <Box textAlign="center">
+                {/* <Box
+                bg="primary"
+                p="4"
+                rounded="5px"
+                color="white"
+                fontWeight="700"
+              >
+                {seconds}
+              </Box>
+              <Text fontFamily="Alexandria">ثانية</Text> */}
+              </Box>
+            </HStack>
+          </Box>
+          <HStack justifyContent="center" w="33%" >
+            <Button
+              bg="#194430 "
+              color="white"
+              rounded="full"
+              _hover={{ opacity: "0.8" }}
+              onClick={() => onVOpen()}
+            >
+              تطوع الآن
+            </Button>
+          </HStack>
+        </HStack>
+      );
+    }
+  };
+
   const { data, isLoading } = useGetStatistics();
   return (
     <>
@@ -179,17 +204,7 @@ const Header = () => {
               </Box>
             )}
 
-            <HStack justifyContent="center" w="100%">
-              <Button
-                bg="#194430 "
-                rounded="full"
-                color="white"
-                _hover={{ opacity: "0.8" }}
-                onClick={() => onIOpen()}
-              >
-                مهتم
-              </Button>
-            </HStack>
+
           </VStack>
 
           <Box
@@ -261,17 +276,7 @@ const Header = () => {
               </Box>
             )}
 
-            <HStack justifyContent="center" w="100%">
-              <Button
-                bg="#194430 "
-                color="white"
-                rounded="full"
-                _hover={{ opacity: "0.8" }}
-                onClick={() => onVOpen()}
-              >
-                تطوع الآن
-              </Button>
-            </HStack>
+
           </VStack>
         </HStack>
       </Box>
