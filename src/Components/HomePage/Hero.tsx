@@ -54,26 +54,25 @@ const Hero = () => {
             lineHeight="51.2px"
           >
             حان الوقت ليكون للعرب صوتٌ حرٌ
-
           </Text>
           <Text color="#5AA48A" fontSize="40px" fontWeight="700">
             كن منهم وابدي اهتمامك الآن
           </Text>
           <HStack justifyContent="center" w="100%" spacing="15px">
             <Button
-              bg="#FFB326"
+              bg="#194430"
               rounded="full"
               color="white"
-              _hover={{ bg: "#D99921" }}
+              _hover={{ opacity: "0.8" }}
               onClick={() => onIOpen()}
             >
               مهتم
             </Button>
             <Button
-              bg="#FFB326"
+              bg="#194430"
               color="white"
               rounded="full"
-              _hover={{ bg: "#D99921" }}
+              _hover={{ opacity: "0.8" }}
               onClick={() => onVOpen()}
             >
               تطوع الآن

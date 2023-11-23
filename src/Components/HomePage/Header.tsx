@@ -74,8 +74,8 @@ const Header = () => {
                 w={{ base: "100%", lg: "428px" }}
                 textAlign="center"
               >
-
-                سينتهي استطلاع الرأي بعد ثلاثين يوماً من اليوم. شارك في الاستطلاع وابدي اهتمامك الآن
+                سينتهي استطلاع الرأي بعد ثلاثين يوماً من اليوم. شارك في
+                الاستطلاع وابدي اهتمامك الآن
               </Text>
               <Text> كن منهم وابدي اهتمامك الآن</Text>
             </Box>
@@ -86,7 +86,8 @@ const Header = () => {
 
             {!isLoading && (
               <Text fontSize="50px" color="#5AA48A">
-                {data?.interest_count
+                {
+                  data?.interest_count
                   // .toString()
                   // .padStart(8, "0")
                   // .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -101,10 +102,10 @@ const Header = () => {
 
             <HStack justifyContent="center" w="100%">
               <Button
-                bg="#FFB326"
+                bg="#194430 "
                 rounded="full"
                 color="white"
-                _hover={{ bg: "#D99921" }}
+                _hover={{ opacity: "0.8" }}
                 onClick={() => onIOpen()}
               >
                 مهتم
@@ -137,7 +138,8 @@ const Header = () => {
               w={{ base: "100%", lg: "428px" }}
               textAlign="center"
             >
-              هل أنت على استعداد للتطوع في حال تقرر إنشاء منظومة تواصل اجتماعي عربي؟ ‎
+              هل أنت على استعداد للتطوع في حال تقرر إنشاء منظومة تواصل اجتماعي
+              عربي؟
             </Text>
 
             <Text textAlign="center" fontSize="24px" fontWeight="700">
@@ -146,7 +148,8 @@ const Header = () => {
 
             {!isLoading && (
               <Text fontSize="50px" color="#5AA48A">
-                {data?.volunteer_count
+                {
+                  data?.volunteer_count
                   // .toString()
                   // .padStart(5, "0")
                   // .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
@@ -161,10 +164,10 @@ const Header = () => {
 
             <HStack justifyContent="center" w="100%">
               <Button
-                bg="#FFB326"
+                bg="#194430 "
                 color="white"
                 rounded="full"
-                _hover={{ bg: "#D99921" }}
+                _hover={{ opacity: "0.8" }}
                 onClick={() => onVOpen()}
               >
                 تطوع الآن
