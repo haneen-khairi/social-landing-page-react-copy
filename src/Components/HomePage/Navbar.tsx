@@ -15,7 +15,7 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalFocusRef = useRef<HTMLDivElement | null>(null); // Change HTMLDivElement to the type of your finalFocusRef element
 
-  const scrollToSection = (id) => {
+  const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
 
     if (element) {
@@ -102,7 +102,7 @@ const Navbar = () => {
       <HStack spacing={{ base: '8px', lg: '16px' }}>
         <Text
           as="button"
-          onClick={() => changeLanguage('arabic')}
+          // onClick={() => changeLanguage('arabic')}
           borderBottom="3px solid transparent"
           _hover={{ color: 'primary', borderColor: 'primary' }}
           cursor="pointer"
@@ -113,7 +113,7 @@ const Navbar = () => {
         </Text>
         <Text
           as="button"
-          onClick={() => changeLanguage('english')}
+          // onClick={() => changeLanguage('english')}
           borderBottom="3px solid transparent"
           _hover={{ color: 'primary', borderColor: 'primary' }}
           cursor="pointer"
@@ -124,7 +124,7 @@ const Navbar = () => {
         </Text>
         <Text
           as="button"
-          onClick={() => changeLanguage('spanish')}
+          // onClick={() => changeLanguage('spanish')}
           borderBottom="3px solid transparent"
           _hover={{ color: 'primary', borderColor: 'primary' }}
           cursor="pointer"
@@ -135,7 +135,7 @@ const Navbar = () => {
         </Text>
         <Text
           as="button"
-          onClick={() => changeLanguage('french')}
+          // onClick={() => changeLanguage('french')}
           borderBottom="3px solid transparent"
           _hover={{ color: 'primary', borderColor: 'primary' }}
           cursor="pointer"
