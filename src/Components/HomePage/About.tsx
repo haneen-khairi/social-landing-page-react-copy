@@ -8,7 +8,7 @@ const About = () => {
       id="about"
       textAlign={{ base: "center", lg: "right" }}
     >
-      <SectionTitle title="عن المبادرة" />
+      <SectionTitle title="عن الإستطلاع" />
       <HStack
         mt="40px"
         fontSize="22px"

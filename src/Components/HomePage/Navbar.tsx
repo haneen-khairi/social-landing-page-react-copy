@@ -38,7 +38,7 @@ const Navbar = () => {
           lineHeight="2"
           onClick={() => scrollToSection("about")}
         >
-          <Link to="#">عن المبادرة</Link>
+          <Link to="#">عن الإستطلاع</Link>
         </Text>
         <Text
           borderBottom="3px solid transparent"
@@ -48,7 +48,7 @@ const Navbar = () => {
           lineHeight="2"
           onClick={() => scrollToSection("goals")}
         >
-          <Link to="#">أهداف المبادرة</Link>
+          <Link to="#">أهداف الإستطلاع</Link>
         </Text>
         <Text
           borderBottom="3px solid transparent"

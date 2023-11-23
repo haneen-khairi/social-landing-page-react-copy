@@ -62,7 +62,7 @@ function Goals() {
   ];
   return (
     <Box px={{ base: "40px", lg: "80px" }} py="30px" id="goals">
-      <SectionTitle title="أهداف المبادرة" />
+      <SectionTitle title="أهداف الإستطلاع" />
       <VStack spacing={{ base: "50px", lg: "24px" }} align="stretch">
         {goals.map((item, index) => (
           <HStack
