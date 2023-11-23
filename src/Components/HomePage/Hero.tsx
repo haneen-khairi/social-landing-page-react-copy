@@ -44,7 +44,7 @@ const Hero = () => {
             fontFamily="Readex Pro"
             textAlign="center"
           >
-            مرحبا بكم في لحظة فارقة في تاريخ أمتنا العربية
+            مرحباً بكم في لحظة فارقة في تاريخ أمتنا العربية
           </Text>
           <Text
             fontSize="30px"
