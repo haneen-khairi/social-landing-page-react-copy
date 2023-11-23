@@ -20,10 +20,10 @@ const Navbar = () => {
     } else {
       // Render the countdown components
       return (
-        <Box p="2" border="2px solid " borderColor="primary" rounded="full">
-          <Text fontFamily="Alexandria">
+        <Box px="3" bg="#FFBD38" rounded="20px" color="white">
+          <Text fontFamily="Alexandria" fontSize="18px">
             باقي على الإستطلاع{" "}
-            <Text as="span" color="primary" fontSize="30px">
+            <Text as="span" color="#A538FF" fontSize="35px">
               {days}
             </Text>{" "}
             يوم
