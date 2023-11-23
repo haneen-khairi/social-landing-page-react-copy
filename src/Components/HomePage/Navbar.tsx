@@ -1,8 +1,37 @@
-import { HStack, Text } from "@chakra-ui/react";
+import { Box, HStack, Spacer, Text } from "@chakra-ui/react";
 // import { BrandLogo } from "../../assets/icons";
 import { Link } from "react-router-dom";
+import Countdown from "react-countdown";
+
+interface CountdownRendererProps {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  completed: boolean;
+}
 
 const Navbar = () => {
+  const targetDate = new Date("December 24, 2023 23:59:59");
+  const renderer: React.FC<CountdownRendererProps> = ({ days, completed }) => {
+    if (completed) {
+      // Render something when the countdown is complete
+      return <span>اكتمل الاستطلاع</span>;
+    } else {
+      // Render the countdown components
+      return (
+        <Box p="2" border="2px solid " borderColor="primary" rounded="full">
+          <Text fontFamily="Alexandria">
+            باقي على الإستطلاع{" "}
+            <Text as="span" color="primary" fontSize="30px">
+              {days}
+            </Text>{" "}
+            يوم
+          </Text>
+        </Box>
+      );
+    }
+  };
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
 
@@ -61,6 +90,8 @@ const Navbar = () => {
           <Link to="#">الجهات الداعمة</Link>
         </Text>
       </HStack>
+      <Spacer />
+      <Countdown date={targetDate} renderer={renderer} />
     </HStack>
   );
 };
