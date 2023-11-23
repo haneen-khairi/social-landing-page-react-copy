@@ -300,7 +300,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                     fontSize="16px"
                     cursor="pointer"
                   >
-                    سياسة الخصوية
+                    سياسة الخصوصية
                   </Box>
                 </VStack>
 
