@@ -16,7 +16,7 @@ const About = () => {
         fontWeight="400"
         spacing="40px"
         lineHeight="48.4px"
-        alignItems="start"
+        alignItems="stretch"
         flexDir={{ base: "column", lg: "row" }}
       >
         <VStack align="stretch" flex="1">
@@ -44,6 +44,10 @@ const About = () => {
             الذي يشيد برواية المعتدي مما يجعل هذه المنصات منحازة وبكل وضوح
             للعدوان الجائر على فلسطين.
           </Text>
+        </VStack>
+        <VStack>
+
+          <Box display="block" bg="#ddd" h="98%" w="1px" />
         </VStack>
         <VStack align="stretch" flex="1">
           <Text>
@@ -82,7 +86,7 @@ const About = () => {
         تكنولوجية عربية تضعنا في المكانة التي نستحق كـأمة لها تاريخ مجيد وتمتلك
         من قدرات ابنائها ما يمكن أن يصنع المستحيل.
       </Text>
-    </Box>
+    </Box >
   );
 };
 
