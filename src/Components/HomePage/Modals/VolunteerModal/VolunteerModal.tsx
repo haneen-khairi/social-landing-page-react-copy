@@ -10,7 +10,7 @@ import {
   ModalOverlay,
   Text,
   VStack,
-  useToast,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { MdGroups } from "react-icons/md";
 import { BsArrowLeft } from "react-icons/bs";
@@ -36,6 +36,11 @@ type Option = {
 
 function VolunteerModal({ isOpen, onClose }: Props) {
   const {
+    isOpen: isVOpen,
+    onOpen: onVOpen,
+    onClose: onVClose,
+  } = useDisclosure();
+  const {
     register,
     handleSubmit,
     formState: { errors },
@@ -50,7 +55,6 @@ function VolunteerModal({ isOpen, onClose }: Props) {
   const { data } = useGetWorkFields();
   const requestVolunteer = useRequestVolunteer();
 
-  const toast = useToast();
   const onSubmit = (values: VolunteerInputs) => {
     requestVolunteer
       .mutateAsync({
@@ -62,15 +66,16 @@ function VolunteerModal({ isOpen, onClose }: Props) {
         years_of_experience: Number(values.years_of_experience),
       })
       .then(() => {
-        toast({
-          title: "شكراً لك",
-          description:
-            "في حال الوصول الى العدد المنشود من المهتمين بإطلاق منظومة تواصل إجتماعي عربي قد يتم الاستعانة بعدد من المتطوعين لبناء هذه المنظومة، وحينها سيتم التواصل معك.",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-          position: "bottom-right",
-        });
+        // toast({
+        //   title: "شكراً لك",
+        //   description:
+        //     "في حال الوصول الى العدد المنشود من المهتمين بإطلاق منظومة تواصل إجتماعي عربي قد يتم الاستعانة بعدد من المتطوعين لبناء هذه المنظومة، وحينها سيتم التواصل معك.",
+        //   status: "success",
+        //   duration: 5000,
+        //   isClosable: true,
+        //   position: "bottom-right",
+        // });
+        onVOpen();
         reset();
         onClose();
       });
@@ -81,244 +86,303 @@ function VolunteerModal({ isOpen, onClose }: Props) {
     setValue("field_of_work", arrayOfIds as never);
   };
   return (
-    <Modal blockScrollOnMount={true} isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
+    <>
+      <Modal blockScrollOnMount={true} isOpen={isVOpen} onClose={onVClose}>
+        <ModalOverlay />
 
-      <ModalContent
-        rounded="30px"
-        dir="ltr"
-        maxW="448px"
-        fontFamily="Noto Kufi Arabic"
-      >
-        <ModalCloseButton
-          position="absolute"
-          left="20px"
-          top="20px"
-          rounded="full"
-        />
+        <ModalContent
+          rounded="6px"
+          dir="ltr"
+          maxW="448px"
+          fontFamily="Noto Kufi Arabic"
+        >
+          <ModalCloseButton position="absolute" left="8px" top="8px" />
 
-        <VStack px="40px" py="40px" align="stretch" dir="rtl">
-          <VStack>
-            <MdGroups size="40px" />
-            <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
-              أرغب بالتطوع
-            </Text>
-            <Text
-              fontFamily="Readex Pro"
-              fontSize="16px"
-              fontWeight="400"
-              textAlign="center"
-              color="#374151"
+          <VStack px="40px" py="40px" align="stretch" dir="rtl">
+            <VStack>
+              <MdGroups size="40px" />
+              <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
+                شكراً لك
+              </Text>
+              <Text
+                fontFamily="Readex Pro"
+                fontSize="16px"
+                fontWeight="400"
+                textAlign="center"
+                color="#374151"
+              >
+                في حال الوصول الى العدد المنشود من المهتمين بإطلاق منظومة تواصل إجتماعي عربي قد يتم الاستعانة بعدد من المتطوعين لبناء هذه المنظومة، وحينها سيتم التواصل معك.
+              </Text>
+            </VStack>
+
+            <Button
+              rounded="full"
+              h="48px"
+              bgGradient="linear(to-r, #282828, #205F45)"
+              _hover={{
+                bgGradient: "linear(to-r, #282828, #205F45)",
+              }}
+              color="white"
+              type="button"
+              mt="30px"
+              onClick={() => onVClose()}
             >
-              الرجاء بيان أدناه في أي مجال ترغب في التطوع مع العلم انه بامكانك
-              اختيار أكثر من مجال.
-            </Text>
+              <HStack justifyContent="space-between" w="100%">
+                <Text
+                  fontFamily="Readex Pro"
+                  fontWeight="500"
+                  fontSize="16px"
+                >
+                  إغلاق
+                </Text>
+                <BsArrowLeft />
+              </HStack>
+            </Button>
+
           </VStack>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <VStack align="stretch" spacing="24px">
-              <VStack align="stretch" w="100%">
-                <FormControl w="100%">
-                  <FormLabel
-                    fontFamily="Readex Pro"
-                    fontSize="14px"
-                    fontWeight="400"
-                    mb="12px"
-                    color="#374151"
-                  >
-                    الإسم
-                  </FormLabel>
-                  <Input
-                    type="text"
-                    w="100%"
-                    rounded="full"
-                    h="48px"
-                    borderColor="#E2E8F0"
-                    _focus={{
-                      boxShadow: "none",
-                      outline: "none",
-                      borderColor: "#E2E8F0",
-                    }}
-                    {...register("name")}
-                  />
-                  {errors && errors.name && (
-                    <ErrorText>{errors.name.message} </ErrorText>
-                  )}
-                </FormControl>
-              </VStack>
-              <VStack align="stretch" w="100%">
-                <FormControl w="100%">
-                  <FormLabel
-                    fontFamily="Readex Pro"
-                    fontSize="14px"
-                    fontWeight="400"
-                    mb="12px"
-                    color="#374151"
-                  >
-                    البريد الإلكتروني
-                  </FormLabel>
-                  <Input
-                    type="text"
-                    w="100%"
-                    rounded="full"
-                    h="48px"
-                    borderColor="#E2E8F0"
-                    _focus={{
-                      boxShadow: "none",
-                      outline: "none",
-                      borderColor: "#E2E8F0",
-                    }}
-                    {...register("email")}
-                  />
-                  {errors && errors.email && (
-                    <ErrorText>{errors.email.message} </ErrorText>
-                  )}
-                </FormControl>
-              </VStack>
-              <VStack align="stretch" w="100%">
-                <FormControl w="100%">
-                  <FormLabel
-                    fontFamily="Readex Pro"
-                    fontSize="14px"
-                    fontWeight="400"
-                    mb="12px"
-                    color="#374151"
-                  >
-                    رقم الهاتف
-                  </FormLabel>
-                  <Input
-                    type="text"
-                    w="100%"
-                    rounded="full"
-                    h="48px"
-                    borderColor="#E2E8F0"
-                    _focus={{
-                      boxShadow: "none",
-                      outline: "none",
-                      borderColor: "#E2E8F0",
-                    }}
-                    {...register("phone_number")}
-                    pattern="[0-9+]*"
-                    onInput={(e) => {
-                      const input = e.target as HTMLInputElement;
-                      input.value = input.value.replace(/[^0-9+]/g, "");
-                    }}
-                    dir="ltr"
-                    textAlign="right"
-                  />
-                  {errors && errors.phone_number && (
-                    <ErrorText>{errors.phone_number.message} </ErrorText>
-                  )}
-                </FormControl>
-              </VStack>
-              <VStack align="stretch" w="100%">
-                <FormControl w="100%">
-                  <FormLabel
-                    fontFamily="Readex Pro"
-                    fontSize="14px"
-                    fontWeight="400"
-                    mb="12px"
-                    color="#374151"
-                  >
-                    طبيعة العمل
-                  </FormLabel>
+        </ModalContent>
+      </Modal>
 
-                  <MultiSelectArea
-                    option={data ? data : []}
-                    inputName="ss"
-                    placeholder=""
-                    onChange={(e) => handleSelectChange(e)}
-                    isMulti={true}
-                  />
-                  {errors && errors.field_of_work && (
-                    <ErrorText>{errors.field_of_work.message} </ErrorText>
-                  )}
-                </FormControl>
-              </VStack>
-              <VStack align="stretch" w="100%">
-                <FormControl w="100%">
-                  <FormLabel
-                    fontFamily="Readex Pro"
-                    fontSize="14px"
-                    fontWeight="400"
-                    mb="12px"
-                    color="#374151"
-                  >
-                    عدد سنوات الخبرة
-                  </FormLabel>
-                  <Input
-                    type="text"
-                    w="100%"
-                    rounded="full"
-                    h="48px"
-                    borderColor="#E2E8F0"
-                    _focus={{
-                      boxShadow: "none",
-                      outline: "none",
-                      borderColor: "#E2E8F0",
-                    }}
-                    {...register("years_of_experience")}
-                  />
-                  {errors && errors.years_of_experience && (
-                    <ErrorText>{errors.years_of_experience.message} </ErrorText>
-                  )}
-                </FormControl>
-              </VStack>
-              <VStack align="stretch" w="100%">
-                <FormControl w="100%">
-                  <FormLabel
-                    fontFamily="Readex Pro"
-                    fontSize="14px"
-                    fontWeight="400"
-                    mb="12px"
-                    color="#374151"
-                  >
-                    عدد الساعات التطوعية للمشروع
-                  </FormLabel>
-                  <Input
-                    type="text"
-                    w="100%"
-                    rounded="full"
-                    h="48px"
-                    borderColor="#E2E8F0"
-                    _focus={{
-                      boxShadow: "none",
-                      outline: "none",
-                      borderColor: "#E2E8F0",
-                    }}
-                    {...register("volunteer_hours")}
-                  />
-                  {errors && errors.volunteer_hours && (
-                    <ErrorText>{errors.volunteer_hours.message} </ErrorText>
-                  )}
-                </FormControl>
-              </VStack>
-              <Button
-                rounded="full"
-                h="48px"
-                bgGradient="linear(to-r, #282828, #205F45)"
-                _hover={{
-                  bgGradient: "linear(to-r, #282828, #205F45)",
-                }}
-                color="white"
-                type="submit"
+      <Modal blockScrollOnMount={true} isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+
+        <ModalContent
+          rounded="30px"
+          dir="ltr"
+          maxW="448px"
+          fontFamily="Noto Kufi Arabic"
+        >
+          <ModalCloseButton
+            position="absolute"
+            left="20px"
+            top="20px"
+            rounded="full"
+          />
+
+          <VStack px="40px" py="40px" align="stretch" dir="rtl">
+            <VStack>
+              <MdGroups size="40px" />
+              <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
+                أرغب بالتطوع
+              </Text>
+              <Text
+                fontFamily="Readex Pro"
+                fontSize="16px"
+                fontWeight="400"
+                textAlign="center"
+                color="#374151"
               >
-                <HStack justifyContent="space-between" w="100%">
-                  <Text
-                    fontFamily="Readex Pro"
-                    fontWeight="500"
-                    fontSize="16px"
-                  >
-                    إرسال
-                  </Text>
-                  <BsArrowLeft />
-                </HStack>
-              </Button>
+                الرجاء بيان أدناه في أي مجال ترغب في التطوع مع العلم انه بامكانك
+                اختيار أكثر من مجال.
+              </Text>
             </VStack>
-          </form>
-        </VStack>
-      </ModalContent>
-    </Modal>
+
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <VStack align="stretch" spacing="24px">
+                <VStack align="stretch" w="100%">
+                  <FormControl w="100%">
+                    <FormLabel
+                      fontFamily="Readex Pro"
+                      fontSize="14px"
+                      fontWeight="400"
+                      mb="12px"
+                      color="#374151"
+                    >
+                      الإسم
+                    </FormLabel>
+                    <Input
+                      type="text"
+                      w="100%"
+                      rounded="full"
+                      h="48px"
+                      borderColor="#E2E8F0"
+                      _focus={{
+                        boxShadow: "none",
+                        outline: "none",
+                        borderColor: "#E2E8F0",
+                      }}
+                      {...register("name")}
+                    />
+                    {errors && errors.name && (
+                      <ErrorText>{errors.name.message} </ErrorText>
+                    )}
+                  </FormControl>
+                </VStack>
+                <VStack align="stretch" w="100%">
+                  <FormControl w="100%">
+                    <FormLabel
+                      fontFamily="Readex Pro"
+                      fontSize="14px"
+                      fontWeight="400"
+                      mb="12px"
+                      color="#374151"
+                    >
+                      البريد الإلكتروني
+                    </FormLabel>
+                    <Input
+                      type="text"
+                      w="100%"
+                      rounded="full"
+                      h="48px"
+                      borderColor="#E2E8F0"
+                      _focus={{
+                        boxShadow: "none",
+                        outline: "none",
+                        borderColor: "#E2E8F0",
+                      }}
+                      {...register("email")}
+                    />
+                    {errors && errors.email && (
+                      <ErrorText>{errors.email.message} </ErrorText>
+                    )}
+                  </FormControl>
+                </VStack>
+                <VStack align="stretch" w="100%">
+                  <FormControl w="100%">
+                    <FormLabel
+                      fontFamily="Readex Pro"
+                      fontSize="14px"
+                      fontWeight="400"
+                      mb="12px"
+                      color="#374151"
+                    >
+                      رقم الهاتف
+                    </FormLabel>
+                    <Input
+                      type="text"
+                      w="100%"
+                      rounded="full"
+                      h="48px"
+                      borderColor="#E2E8F0"
+                      _focus={{
+                        boxShadow: "none",
+                        outline: "none",
+                        borderColor: "#E2E8F0",
+                      }}
+                      {...register("phone_number")}
+                      pattern="[0-9+]*"
+                      onInput={(e) => {
+                        const input = e.target as HTMLInputElement;
+                        input.value = input.value.replace(/[^0-9+]/g, "");
+                      }}
+                      dir="ltr"
+                      textAlign="right"
+                    />
+                    {errors && errors.phone_number && (
+                      <ErrorText>{errors.phone_number.message} </ErrorText>
+                    )}
+                  </FormControl>
+                </VStack>
+                <VStack align="stretch" w="100%">
+                  <FormControl w="100%">
+                    <FormLabel
+                      fontFamily="Readex Pro"
+                      fontSize="14px"
+                      fontWeight="400"
+                      mb="12px"
+                      color="#374151"
+                    >
+                      طبيعة العمل
+                    </FormLabel>
+
+                    <MultiSelectArea
+                      option={data ? data : []}
+                      inputName="ss"
+                      placeholder=""
+                      onChange={(e) => handleSelectChange(e)}
+                      isMulti={true}
+                    />
+                    {errors && errors.field_of_work && (
+                      <ErrorText>{errors.field_of_work.message} </ErrorText>
+                    )}
+                  </FormControl>
+                </VStack>
+                <VStack align="stretch" w="100%">
+                  <FormControl w="100%">
+                    <FormLabel
+                      fontFamily="Readex Pro"
+                      fontSize="14px"
+                      fontWeight="400"
+                      mb="12px"
+                      color="#374151"
+                    >
+                      عدد سنوات الخبرة
+                    </FormLabel>
+                    <Input
+                      type="text"
+                      w="100%"
+                      rounded="full"
+                      h="48px"
+                      borderColor="#E2E8F0"
+                      _focus={{
+                        boxShadow: "none",
+                        outline: "none",
+                        borderColor: "#E2E8F0",
+                      }}
+                      {...register("years_of_experience")}
+                    />
+                    {errors && errors.years_of_experience && (
+                      <ErrorText>{errors.years_of_experience.message} </ErrorText>
+                    )}
+                  </FormControl>
+                </VStack>
+                <VStack align="stretch" w="100%">
+                  <FormControl w="100%">
+                    <FormLabel
+                      fontFamily="Readex Pro"
+                      fontSize="14px"
+                      fontWeight="400"
+                      mb="12px"
+                      color="#374151"
+                    >
+                      عدد الساعات التطوعية للمشروع
+                    </FormLabel>
+                    <Input
+                      type="number"
+                      w="100%"
+                      rounded="full"
+                      h="48px"
+                      borderColor="#E2E8F0"
+                      _focus={{
+                        boxShadow: "none",
+                        outline: "none",
+                        borderColor: "#E2E8F0",
+                      }}
+                      {...register("volunteer_hours")}
+                    />
+                    {errors && errors.volunteer_hours && (
+                      <ErrorText>{errors.volunteer_hours.message} </ErrorText>
+                    )}
+                  </FormControl>
+                </VStack>
+                <Button
+                  rounded="full"
+                  h="48px"
+                  bgGradient="linear(to-r, #282828, #205F45)"
+                  _hover={{
+                    bgGradient: "linear(to-r, #282828, #205F45)",
+                  }}
+                  color="white"
+                  type="submit"
+                >
+                  <HStack justifyContent="space-between" w="100%">
+                    <Text
+                      fontFamily="Readex Pro"
+                      fontWeight="500"
+                      fontSize="16px"
+                    >
+                      إرسال
+                    </Text>
+                    <BsArrowLeft />
+                  </HStack>
+                </Button>
+              </VStack>
+            </form>
+          </VStack>
+        </ModalContent>
+      </Modal>
+    </>
   );
 }
 
