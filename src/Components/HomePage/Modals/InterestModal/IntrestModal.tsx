@@ -22,7 +22,7 @@ import ErrorText from "../../../ErrorText";
 import IntrestInputs from "./IntrestInputs";
 import IntrestSchema from "./IntrestSchema";
 import MultiSelectArea from "../../../MultiSelectArea/MultiSelectArea";
-import React, { useState } from 'react';
+import { useState } from 'react';
 interface Props {
   isOpen: boolean;
   onClose: () => void;

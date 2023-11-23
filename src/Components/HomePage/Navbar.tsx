@@ -9,7 +9,7 @@ import { Box, HStack, Text, Spacer,
   useDisclosure,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
-import React, { useRef } from 'react';
+import { useRef } from 'react';
  
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -25,9 +25,9 @@ const Navbar = () => {
     }
   };
 
-  const changeLanguage = (language) => {
-    console.log(`Language changed to ${language}`);
-  };
+  // const changeLanguage = (language) => {
+  //   console.log(`Language changed to ${language}`);
+  // };
 
   return (
 <>

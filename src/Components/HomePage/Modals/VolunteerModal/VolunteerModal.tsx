@@ -27,7 +27,7 @@ import { useForm } from "react-hook-form";
 import ErrorText from "../../../ErrorText";
 import VolunteerInputs from "./VolunteerInputs";
 import VolunteerSchema from "./VolunteerSchema";
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 interface Props {
   isOpen: boolean;
