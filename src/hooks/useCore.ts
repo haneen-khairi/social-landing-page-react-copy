@@ -1,3 +1,4 @@
+import Reel from "../entities/Core/Reels";
 import RequestIntrest from "../entities/Core/RequestIntrest";
 import RequestVolunteer from "../entities/Core/RequestVolunteer";
 import Sponsors from "../entities/Core/Sponsors";
@@ -9,6 +10,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 const apiClient = new APIClient<WorkField>("/work-fields/");
 const apiStatisitcs = new APIClient<Statistics>("/statistics/");
 const apiSponsors = new APIClient<Sponsors>(`/sponsors/`);
+const apiReels = new APIClient<Sponsors>(`/reels/`);
 const apiRequsetVolunteer = new APIClient<RequestVolunteer>(`/volunteer/`);
 const apiRequsetIntrest = new APIClient<RequestIntrest>(`/interest/`);
 
@@ -32,6 +34,14 @@ const useGetSponsors = () => {
   return useQuery<Sponsors[]>({
     queryKey: ["Sponsors"],
     queryFn: apiSponsors.get,
+    staleTime: 24 * 60 * 60 * 1000, //24h
+  });
+};
+
+const useGetReels = () => {
+  return useQuery<Reel[]>({
+    queryKey: ["Reels"],
+    queryFn: apiReels.get,
     staleTime: 24 * 60 * 60 * 1000, //24h
   });
 };
@@ -72,4 +82,5 @@ export {
   useRequestVolunteer,
   useRequestIntrest,
   useGetSponsors,
+  useGetReels,
 };
