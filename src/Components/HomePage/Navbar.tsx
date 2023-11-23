@@ -87,7 +87,7 @@ const Navbar = () => {
           lineHeight="2"
           onClick={() => scrollToSection("sponsors")}
         >
-          <Link to="#">الجهات الداعمة</Link>
+          <Link to="#">الداعمون الإعلاميون</Link>
         </Text>
       </HStack>
       <Spacer />

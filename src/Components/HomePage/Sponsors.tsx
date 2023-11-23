@@ -11,7 +11,7 @@ const Sponsors = () => {
 
   return (
     <Box fontFamily="Noto Kufi Arabic" pt="64px" id="sponsors">
-      <SectionTitle title="الجهات الداعمة" />
+      <SectionTitle title="الداعمون الإعلاميون" />
 
       {!isLoading && (
         <Box>
