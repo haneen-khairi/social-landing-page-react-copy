@@ -1,5 +1,5 @@
 import { HStack, Text } from "@chakra-ui/react";
-import { BrandLogo } from "../../assets/icons";
+// import { BrandLogo } from "../../assets/icons";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -16,11 +16,14 @@ const Navbar = () => {
     <HStack
       p="24px 40px 24px 40px"
       borderBottom="1px solid #0000001F"
-      spacing="56px"
+      spacing="24px"
       flexWrap="wrap"
       justifyContent={{ base: "center", lg: "flex-start" }}
     >
-      <BrandLogo />
+      {/* <BrandLogo /> */}
+      <Text fontSize="30px" fontFamily="Alexandria" fontWeight="600">
+        البوصلة
+      </Text>
       <HStack
         spacing="32px"
         fontFamily="Readex Pro"
