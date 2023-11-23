@@ -1,9 +1,9 @@
+import React from 'react';
 import { Box, Image } from "@chakra-ui/react";
 import { useGetSponsors } from "../../hooks/useCore";
 import SectionTitle from "../SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-
 import "swiper/css";
 
 const Sponsors = () => {
@@ -16,12 +16,33 @@ const Sponsors = () => {
       {!isLoading && (
         <Box>
           <Swiper
-            spaceBetween="40px"
-            slidesPerView={7}
+            spaceBetween={40}
             modules={[Autoplay]}
             autoplay={{
               delay: 1000,
               disableOnInteraction: false,
+            }}
+            breakpoints={{
+              320: {
+                slidesPerView: 2,
+                spaceBetween: 16,
+              },
+              480: {
+                slidesPerView: 3,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 4,
+                spaceBetween: 30,
+              },
+              1024: {
+                slidesPerView: 6,
+                spaceBetween: 40,
+              },
+              1200: {
+                slidesPerView: 7,
+                spaceBetween: 40,
+              },
             }}
           >
             {data?.map((item, index) => (
