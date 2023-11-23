@@ -64,6 +64,7 @@ function IntrestModal({ isOpen, onClose }: Props) {
       .mutateAsync({
         email: values.email,
         name: values.name,
+        country: values.country,
       })
       .then(() => {
         onIOpen();
