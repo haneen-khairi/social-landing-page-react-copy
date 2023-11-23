@@ -50,7 +50,13 @@ const Header = () => {
           </Text>
           <HStack dir="ltr">
             <Box textAlign="center">
-              <Box bg="primary" p="4" rounded="5px" color="white">
+              <Box
+                bg="primary"
+                p="4"
+                rounded="5px"
+                color="white"
+                fontWeight="700"
+              >
                 {days}
               </Box>
               <Text fontFamily="Alexandria">يوم</Text>
@@ -59,7 +65,13 @@ const Header = () => {
               :
             </Text>
             <Box textAlign="center">
-              <Box bg="primary" p="4" rounded="5px" color="white">
+              <Box
+                bg="primary"
+                p="4"
+                rounded="5px"
+                color="white"
+                fontWeight="700"
+              >
                 {hours}
               </Box>
               <Text fontFamily="Alexandria">ساعة</Text>
@@ -68,7 +80,13 @@ const Header = () => {
               :
             </Text>
             <Box textAlign="center">
-              <Box bg="primary" p="4" rounded="5px" color="white">
+              <Box
+                bg="primary"
+                p="4"
+                rounded="5px"
+                color="white"
+                fontWeight="700"
+              >
                 {minutes}
               </Box>
               <Text fontFamily="Alexandria">دقيقة</Text>
