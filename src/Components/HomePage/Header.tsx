@@ -31,6 +31,7 @@ const Header = () => {
     days,
     hours,
     minutes,
+    seconds,
     completed,
   }) => {
     if (completed) {
@@ -90,6 +91,21 @@ const Header = () => {
                 {minutes}
               </Box>
               <Text fontFamily="Alexandria">دقيقة</Text>
+            </Box>
+            <Text fontSize="20px" pb="4">
+              :
+            </Text>
+            <Box textAlign="center">
+              <Box
+                bg="primary"
+                p="4"
+                rounded="5px"
+                color="white"
+                fontWeight="700"
+              >
+                {seconds}
+              </Box>
+              <Text fontFamily="Alexandria">ثانية</Text>
             </Box>
           </HStack>
         </Box>
