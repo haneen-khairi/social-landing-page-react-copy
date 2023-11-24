@@ -68,7 +68,9 @@ const Hero = () => {
               color="white"
               _hover={{ opacity: "0.8" }}
               onClick={() => onIOpen()}
-            
+              w="100%"
+            fontSize="25px"
+            p={3}
             >
               مهتم
             </Button>
@@ -78,7 +80,9 @@ const Hero = () => {
               rounded="full"
               _hover={{ opacity: "0.8" }}
               onClick={() => onVOpen()}
-             
+              w="100%"
+              fontSize="25px"
+              p={3}
             >
               
               تطوع الآن

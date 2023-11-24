@@ -10,7 +10,7 @@ import { Box, HStack, Text, Spacer,
 } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
- 
+ import {HamburgerIcon} from '@chakra-ui/icons';
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalFocusRef = useRef<HTMLDivElement | null>(null); // Change HTMLDivElement to the type of your finalFocusRef element
@@ -182,7 +182,7 @@ const Navbar = () => {
         transition="0.3s"
         lineHeight="2"
       >
-        Menu
+        <HamburgerIcon/>
       </Text>
     </Box>
   </HStack>
@@ -198,10 +198,11 @@ const Navbar = () => {
       <DrawerCloseButton />
       <DrawerHeader>Menu</DrawerHeader>
       <DrawerBody>
-        <Text onClick={() => scrollToSection('about')}>عن الإستطلاع</Text>
-        <Text onClick={() => scrollToSection('goals')}>أهداف الإستطلاع</Text>
-        <Text onClick={() => scrollToSection('sponsors')}>الداعمون الإعلاميون</Text>
-        <Text onClick={() => scrollToSection('statistics')}>الإحصائيات</Text>
+      <Text m={5}> <Link to="/">الصفحة الرئيسية</Link></Text>
+        <Text m={5} onClick={() => scrollToSection('about')}>عن الإستطلاع</Text>
+        <Text m={5} onClick={() => scrollToSection('goals')}>أهداف الإستطلاع</Text>
+        <Text m={5}  onClick={() => scrollToSection('sponsors')}>الداعمون الإعلاميون</Text>
+        <Text m={5}  > <Link to="/statistics">الإحصائيات</Link></Text>
       </DrawerBody>
     </DrawerContent>
   </Drawer> 

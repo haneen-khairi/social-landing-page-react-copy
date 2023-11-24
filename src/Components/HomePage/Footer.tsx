@@ -3,6 +3,7 @@ import SectionTitle from "../SectionTitle";
 
 const Footer = () => {
   return (
+    <>
     <Box
       bg="#F2F2F2"
       mt="80px"
@@ -26,6 +27,8 @@ const Footer = () => {
         وحقوق الإنسان من قبل مواقع تواصل عالمية.
       </Text>
     </Box>
+    <Text> All Right Reserved © 2023 </Text>
+    </>
   );
 };
 

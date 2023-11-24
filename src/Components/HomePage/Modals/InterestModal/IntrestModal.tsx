@@ -11,7 +11,9 @@ import {
   Text,
   VStack,
   useDisclosure,
-  Alert, AlertIcon
+  Alert,
+  AlertIcon,
+  Icon,
 } from "@chakra-ui/react";
 import { MdEmojiPeople, MdGroups } from "react-icons/md";
 import { BsArrowLeft } from "react-icons/bs";
@@ -22,13 +24,13 @@ import ErrorText from "../../../ErrorText";
 import IntrestInputs from "./IntrestInputs";
 import IntrestSchema from "./IntrestSchema";
 import MultiSelectArea from "../../../MultiSelectArea/MultiSelectArea";
-import { useState } from 'react';
+import { useState } from "react";
+import { FaFacebook, FaTwitter, FaCopy } from "react-icons/fa"; // Import icons from react-icons library
+
 interface Props {
   isOpen: boolean;
   onClose: () => void;
 }
-
-
 
 function IntrestModal({ isOpen, onClose }: Props) {
   const {
@@ -60,18 +62,29 @@ function IntrestModal({ isOpen, onClose }: Props) {
   const requestIntrest = useRequestIntrest();
 
   const onSubmit = (values: IntrestInputs) => {
-    requestIntrest
-      .mutateAsync(values)
-      .then(() => {
-        onIOpen();
-        reset();
-        onClose();
-      });
+    requestIntrest.mutateAsync(values).then(() => {
+      onIOpen();
+      reset();
+      onClose();
+    });
   };
   const [copySuccess, setCopySuccess] = useState(false);
 
+  const shareOnFacebook = () => {
+    // Implement Facebook sharing logic here
+    // You may use the Facebook SDK or create a custom sharing URL
+    console.log("Share on Facebook:", currentURL);
+  };
+
+  const shareOnTwitter = () => {
+    // Implement Twitter sharing logic here
+    // You may use the Twitter API or create a custom sharing URL
+    console.log("Share on Twitter:", currentURL);
+  };
   const copyToClipboard = () => {
-    navigator.clipboard.writeText('انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك. شارك بالإستطلاع الآن www.albusalah.com أبدي اهتمامك');
+    navigator.clipboard.writeText(
+      "انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك. شارك بالإستطلاع الآن www.albusalah.com أبدي اهتمامك"
+    );
     setCopySuccess(true);
 
     // Hide the message after 3 seconds (adjust as needed)
@@ -105,8 +118,8 @@ function IntrestModal({ isOpen, onClose }: Props) {
                 textAlign="center"
                 color="#374151"
               >
-
-                سيتم اعلامك حين اكتمال العدد المطلوب يمكنك العودة لهذه الصفحة في اي وقت للاطلاع على اخر المستجدات
+                سيتم اعلامك حين اكتمال العدد المطلوب يمكنك العودة لهذه الصفحة في
+                اي وقت للاطلاع على اخر المستجدات
               </Text>
             </VStack>
 
@@ -123,11 +136,7 @@ function IntrestModal({ isOpen, onClose }: Props) {
               onClick={() => onIClose()}
             >
               <HStack justifyContent="space-between" w="100%">
-                <Text
-                  fontFamily="Readex Pro"
-                  fontWeight="500"
-                  fontSize="16px"
-                >
+                <Text fontFamily="Readex Pro" fontWeight="500" fontSize="16px">
                   إغلاق
                 </Text>
                 <BsArrowLeft />
@@ -141,40 +150,68 @@ function IntrestModal({ isOpen, onClose }: Props) {
               textAlign="center"
               color="#374151"
             >
-        
-
-              <Text
-                as="button"
-                onClick={copyToClipboard}
-                borderBottom="3px solid transparent"
-                _hover={{ color: "primary", borderColor: "primary" }}
-                cursor="pointer"
-                transition="0.3s"
-                lineHeight="2"
-                color="green"
-              > 
-                 شارك الآن
-              </Text>
-   
+              <HStack
+                borderTop="1px solid #0000001F"
+                spacing={{ base: "12px", lg: "20px" }}
+                flexWrap="wrap"
+                justifyContent={{ base: "center", lg: "center" }}
+                pt={5}
+                mb={-5}
+              >
+                <Text as="button" onClick={copyToClipboard}>
+                  <Icon
+                    as={FaFacebook}
+                    color="green"
+                    pb={1}
+                    _hover={{ color: "primary", borderColor: "primary" }}
+                    borderBottom="3px solid transparent"
+                    onClick={shareOnFacebook}
+                    cursor="pointer"
+                    boxSize="24px"
+                  />
+                </Text>
+                <Text as="button" onClick={copyToClipboard}>
+                  <Icon
+                    as={FaTwitter}
+                    color="green"
+                    pb={1}
+                    _hover={{ color: "primary", borderColor: "primary" }}
+                    borderBottom="3px solid transparent"
+                    onClick={shareOnTwitter}
+                    cursor="pointer"
+                    boxSize="24px"
+                  />
+                </Text>
+                <Text as="button" onClick={copyToClipboard}>
+                  <Icon
+                    pb={1}
+                    borderBottom="3px solid transparent"
+                    _hover={{ color: "primary", borderColor: "primary" }}
+                    cursor="pointer"
+                    transition="0.3s"
+                    color="green"
+                    as={FaCopy}
+                    boxSize="24px"
+                  />
+                </Text>
+              </HStack>
             </Text>
             {copySuccess && (
-        <Alert
-          status="success"
-          variant="subtle"
-          flexDirection="column"
-          alignItems="center"
-          justifyContent="center"
-          textAlign="center"
-          color="green"
-        >
-          <AlertIcon boxSize="4" />
-          انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك. شارك بالإستطلاع الآن 
-          www.albusalah.com 
-          أبدي اهتمامك
-        </Alert>
+              <Alert
+                status="success"
+                variant="subtle"
+                flexDirection="column"
+                alignItems="center"
+                justifyContent="center"
+                textAlign="center"
+                color="green"
+              >
+                <AlertIcon boxSize="4" />
+                انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك.
+                شارك بالإستطلاع الآن www.albusalah.com أبدي اهتمامك
+              </Alert>
             )}
           </VStack>
-
         </ModalContent>
       </Modal>
 
@@ -200,16 +237,6 @@ function IntrestModal({ isOpen, onClose }: Props) {
               <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
                 أبدي إهتمامك
               </Text>
-              {/* <Text
-              fontFamily="Readex Pro"
-              fontSize="16px"
-              fontWeight="400"
-              textAlign="center"
-              color="#374151"
-            >
-              هذه المبادرة لكل من يجد لديه القدرة على المساهمة في تطويرها بشكل
-              تطوعي كل حسب تخصصة
-            </Text> */}
             </VStack>
 
             <form onSubmit={handleSubmit(onSubmit)}>
