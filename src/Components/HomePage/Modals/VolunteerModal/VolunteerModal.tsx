@@ -28,6 +28,7 @@ import ErrorText from "../../../ErrorText";
 import VolunteerInputs from "./VolunteerInputs";
 import VolunteerSchema from "./VolunteerSchema";
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
   isOpen: boolean;
@@ -45,7 +46,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
     onOpen: onVOpen,
     onClose: onVClose,
   } = useDisclosure();
-
+  const { t } = useTranslation();
   const {
     isOpen: isTermsOpen,
     onOpen: onTermsOpen,
@@ -83,8 +84,9 @@ function VolunteerModal({ isOpen, onClose }: Props) {
     setValue("field_of_work", arrayOfIds as never);
   };
   const [copySuccess, setCopySuccess] = useState(false);
+  const translatedText = t('intrest.text6');
   const copyToClipboard = () => {
-    navigator.clipboard.writeText('انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك. شارك بالإستطلاع الآن www.albusalah.com أبدي اهتمامك');
+    navigator.clipboard.writeText(translatedText);
     setCopySuccess(true);
     setTimeout(() => {
       setCopySuccess(false);
@@ -111,7 +113,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
             <VStack>
               <MdGroups size="40px" />
               <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
-                شكراً لك
+              {t('volunteer.text2')}
               </Text>
               <Text
                 fontFamily="Readex Pro"
@@ -120,7 +122,8 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                 textAlign="center"
                 color="#374151"
               >
-                في حال الوصول الى العدد المنشود من المهتمين بإطلاق منظومة تواصل إجتماعي عربي قد يتم الاستعانة بعدد من المتطوعين لبناء هذه المنظومة، وحينها سيتم التواصل معك.
+                       {t('volunteer.text3')}
+              
               </Text>
             </VStack>
 
@@ -142,7 +145,8 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                   fontWeight="500"
                   fontSize="16px"
                 >
-                  إغلاق
+                           {t('volunteer.text4')}
+ 
                 </Text>
                 <BsArrowLeft />
               </HStack>
@@ -165,7 +169,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                 lineHeight="2"
                 color="green"
               >
-                شارك الآن
+         {t('volunteer.text5')} 
               </Text>
             </Text>
           </VStack>
@@ -173,7 +177,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
           {copySuccess && (
             <Alert status="success" variant="solid">
               <AlertIcon />
-              انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك. شارك بالإستطلاع الآن www.albusalah.com أبدي اهتمامك
+              {t('volunteer.text6')} 
             </Alert>
           )}
         </ModalContent>
@@ -199,7 +203,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
             <VStack>
               <MdGroups size="40px" />
               <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
-                أرغب بالتطوع
+              {t('volunteer.text8')} 
               </Text>
               <Text
                 fontFamily="Readex Pro"
@@ -208,8 +212,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                 textAlign="center"
                 color="#374151"
               >
-                الرجاء بيان أدناه في أي مجال ترغب في التطوع مع العلم انه بامكانك
-                اختيار أكثر من مجال.
+                    {t('volunteer.text7')} 
               </Text>
             </VStack>
 
@@ -224,7 +227,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                       mb="12px"
                       color="#374151"
                     >
-                      الإسم
+                              {t('intrest.text2')} 
                     </FormLabel>
                     <Input
                       type="text"
@@ -254,7 +257,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                       mb="12px"
                       color="#374151"
                     >
-                      الدولة
+                       {t('intrest.text4')}  
                     </FormLabel>
 
                     <MultiSelectArea
@@ -280,7 +283,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                       mb="12px"
                       color="#374151"
                     >
-                      البريد الإلكتروني
+                 {t('intrest.text3')}  
                     </FormLabel>
                     <Input
                       type="text"
@@ -310,7 +313,8 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                       mb="12px"
                       color="#374151"
                     >
-                      مجال التخصص
+                       {t('volunteer.text9')}  
+                      
                     </FormLabel>
 
                     <MultiSelectArea
@@ -334,7 +338,8 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                     fontSize="16px"
                     cursor="pointer"
                   >
-                    سياسة الخصوصية
+                        {t('volunteer.text10')}  
+                    
                   </Box>
                 </VStack>
 
@@ -354,7 +359,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                       fontWeight="500"
                       fontSize="16px"
                     >
-                      إرسال
+                  {t('intrest.text5')}  
                     </Text>
                     <BsArrowLeft />
                   </HStack>
@@ -382,7 +387,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
             <VStack>
               {/* <MdGroups size="40px" /> */}
               <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
-                سياسة الخصوصية
+            {t('volunteer.text10')}   
               </Text>
               <Text
                 fontFamily="Readex Pro"
@@ -391,34 +396,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                 textAlign="center"
                 color="#374151"
               >
-                سياسة الخصوصية
-                نشكرك على زيارتك لموقعنا الإلكترونيwww.albusalah.com  والمشاركة في استطلاعات الرأي.
-                نحن نلتزم بحماية خصوصيتك وسرية معلوماتك الشخصية.
-                يرجى قراءة البنود التالية لفهم كيفية جمعنا واستخدامنا وحمايتنا لمعلوماتك الشخصية التي نجمعها
-                <br /><br />
-                1.نقوم بجمع معلومات محددة عند استخدامك لموقعنا أو خدماتنا. هذه المعلومات قد تشمل الاسم، البريد الإلكتروني، ومعلومات أخرى ذات صلة.
-                <br /><br />
-                2. استخدام المعلومات: نستخدم المعلومات الشخصية التي نجمعها لتحسين خدماتنا وتجربتك كمستخدم. نحن لا نشارك هذه المعلومات مع أطراف ثالثة دون موافقتك الصريحة.
-                <br /><br />
-                3. حماية المعلومات: نحن نتخذ إجراءات أمان ملائمة لحماية معلوماتك الشخصية من الوصول غير المصرح به أو الاستخدام أو التدمير أو التعديل. ومع ذلك، يجب عليك أيضًا اتخاذ الخطوات اللازمة للحفاظ على سرية معلوماتك.
-                <br /><br />
-                4. استخدام ملفات تعريف الارتباط (Cookies) : قد نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا. يمكنك تعطيل ملفات تعريف الارتباط في إعدادات متصفحك إذا كنت لا ترغب في استخدامها.
-                <br /><br />
-                5. روابط لمواقع الطرف الثالث: قد نقدم روابط إلى مواقع الويب الخارجية. لا يمكننا التحكم في سياسات الخصوصية أو محتوى هذه المواقع ونشجعك على قراءة سياسات الخصوصية الخاصة بهم.
-                <br /><br />
-                6. تحديثات لسياسة الخصوصية: قد نقوم بتحديث هذه السياسة بشكل دوري. يرجى مراجعة هذه الصفحة بانتظام لمعرفة أحدث المعلومات حول سياساتنا الخصوصية
-                <br /><br />
-                باستخدامك لموقعنا، فإنك توافق على جمع واستخدام وحماية معلوماتك الشخصية وفقًا لهذه السياسة.
-                <br /><br />
-                إذا كان لديك أي أسئلة أو استفسارات حول سياسة الخصوصية، يرجى الاتصال بنا عبر: info@albusalah.com
-                <br />
-                تاريخ آخر تحديث: ‏الأربعاء‏، 22‏ تشرين الثاني‏، 2023.
-                <br />
-                نشكر لك تفهمك وثقتك فينا.
-
-
-
-
+              {t('volunteer.text11')}
               </Text>
             </VStack>
 
@@ -440,7 +418,7 @@ function VolunteerModal({ isOpen, onClose }: Props) {
                   fontWeight="500"
                   fontSize="16px"
                 >
-                  إغلاق
+                {t('volunteer.text4')}
                 </Text>
                 <BsArrowLeft />
               </HStack>

@@ -10,7 +10,7 @@ import {
 import ChartImage from "../../assets/chart.png";
 import VolunteerModal from "./Modals/VolunteerModal/VolunteerModal";
 import IntrestModal from "./Modals/InterestModal/IntrestModal";
-
+import { useTranslation } from 'react-i18next';
 
 
 const Hero = () => {
@@ -19,6 +19,7 @@ const Hero = () => {
     onOpen: onVOpen,
     onClose: onVClose,
   } = useDisclosure();
+  const { t } = useTranslation();
   const {
     isOpen: isIOpen,
     onOpen: onIOpen,
@@ -47,7 +48,7 @@ const Hero = () => {
             fontFamily="Readex Pro"
             textAlign="center"
           >
-            مرحباً بكم في لحظة فارقة في تاريخ أمتنا العربية
+           {t('hero.welcomeText')}
           </Text>
           <Text
             fontSize="30px"
@@ -56,10 +57,10 @@ const Hero = () => {
             textAlign="center"
             lineHeight="51.2px"
           >
-            حان الوقت ليكون للعرب صوتٌ حرٌ
+             {t('hero.timeForVoice')}
           </Text>
           <Text color="#5AA48A" fontSize="40px" fontWeight="700">
-            كن منهم وابدي اهتمامك الآن
+          {t('hero.joinThem')}
           </Text>
           <HStack justifyContent="center" w="100%" spacing="15px">
             <Button
@@ -72,7 +73,7 @@ const Hero = () => {
             fontSize="25px"
             p={3}
             >
-              مهتم
+                {t('hero.interested')}
             </Button>
             <Button
               bg="#194430"
@@ -84,8 +85,7 @@ const Hero = () => {
               fontSize="25px"
               p={3}
             >
-              
-              تطوع الآن
+               {t('hero.volunteerNow')}
             </Button>
           </HStack>
         </VStack>

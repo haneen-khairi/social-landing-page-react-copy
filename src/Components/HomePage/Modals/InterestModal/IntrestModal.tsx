@@ -26,7 +26,7 @@ import IntrestSchema from "./IntrestSchema";
 import MultiSelectArea from "../../../MultiSelectArea/MultiSelectArea";
 import { useState } from "react";
 import { FaFacebook, FaTwitter, FaCopy } from "react-icons/fa"; // Import icons from react-icons library
-
+import { useTranslation } from 'react-i18next';
 interface Props {
   isOpen: boolean;
   onClose: () => void;
@@ -47,7 +47,7 @@ function IntrestModal({ isOpen, onClose }: Props) {
   });
 
   const { data } = useGetCountries();
-
+  const { t } = useTranslation();
   const handleSelectChange = (selected: { name: string; id: number }) => {
     console.log(selected.id, "selected.id");
     setValue("country", selected.id as never);
@@ -81,13 +81,11 @@ function IntrestModal({ isOpen, onClose }: Props) {
     // You may use the Twitter API or create a custom sharing URL
     // console.log("Share on Twitter:", currentURL);
   };
+  const translatedText = t('intrest.text6');
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(
-      "انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك. شارك بالإستطلاع الآن www.albusalah.com أبدي اهتمامك"
-    );
+    navigator.clipboard.writeText(translatedText);
     setCopySuccess(true);
-
-    // Hide the message after 3 seconds (adjust as needed)
+ 
     setTimeout(() => {
       setCopySuccess(false);
     }, 3000);
@@ -109,7 +107,7 @@ function IntrestModal({ isOpen, onClose }: Props) {
             <VStack>
               <MdGroups size="40px" />
               <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
-                شكرا لاهتمامك
+                       {t('intrest.text9')}
               </Text>
               <Text
                 fontFamily="Readex Pro"
@@ -118,8 +116,8 @@ function IntrestModal({ isOpen, onClose }: Props) {
                 textAlign="center"
                 color="#374151"
               >
-                سيتم اعلامك حين اكتمال العدد المطلوب يمكنك العودة لهذه الصفحة في
-                اي وقت للاطلاع على اخر المستجدات
+                       {t('intrest.text8')}
+             
               </Text>
             </VStack>
 
@@ -137,7 +135,8 @@ function IntrestModal({ isOpen, onClose }: Props) {
             >
               <HStack justifyContent="space-between" w="100%">
                 <Text fontFamily="Readex Pro" fontWeight="500" fontSize="16px">
-                  إغلاق
+                  
+                  {t('intrest.text7')}
                 </Text>
                 <BsArrowLeft />
               </HStack>
@@ -207,8 +206,7 @@ function IntrestModal({ isOpen, onClose }: Props) {
                 color="green"
               >
                 <AlertIcon boxSize="4" />
-                انا مهتم بإطلاق منظومة تواصل اجتماعي عربي نحو صوت عربي حر شارك.
-                شارك بالإستطلاع الآن www.albusalah.com أبدي اهتمامك
+                {t('intrest.text6')}
               </Alert>
             )}
           </VStack>
@@ -235,7 +233,7 @@ function IntrestModal({ isOpen, onClose }: Props) {
             <VStack>
               <MdEmojiPeople size="40px" />
               <Text fontFamily="Readex Pro" fontSize="20px" fontWeight="600">
-                أبدي إهتمامك
+              {t('intrest.text1')}
               </Text>
             </VStack>
 
@@ -250,7 +248,8 @@ function IntrestModal({ isOpen, onClose }: Props) {
                       mb="12px"
                       color="#374151"
                     >
-                      الإسم
+                          {t('intrest.text2')}
+                      
                     </FormLabel>
                     <Input
                       type="text"
@@ -279,7 +278,8 @@ function IntrestModal({ isOpen, onClose }: Props) {
                       mb="12px"
                       color="#374151"
                     >
-                      البريد الإلكتروني
+                          {t('intrest.text3')}
+                  
                     </FormLabel>
                     <Input
                       type="text"
@@ -308,7 +308,8 @@ function IntrestModal({ isOpen, onClose }: Props) {
                       mb="12px"
                       color="#374151"
                     >
-                      الدولة
+                     {t('intrest.text4')}
+                      
                     </FormLabel>
 
                     <MultiSelectArea
@@ -340,7 +341,7 @@ function IntrestModal({ isOpen, onClose }: Props) {
                       fontWeight="500"
                       fontSize="16px"
                     >
-                      إرسال
+                      {t('intrest.text5')} 
                     </Text>
                     <BsArrowLeft />
                   </HStack>

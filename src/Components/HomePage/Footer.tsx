@@ -1,7 +1,9 @@
 import { Box, Text } from "@chakra-ui/react";
 import SectionTitle from "../SectionTitle";
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <>
     <Box
@@ -12,7 +14,7 @@ const Footer = () => {
       flexDir="column"
       alignItems="center"
     >
-      <SectionTitle title="عن البوصلة" />
+      <SectionTitle title={t('footer.title')} />
       <Text
         fontSize="20px"
         fontWeight="400"
@@ -21,10 +23,7 @@ const Footer = () => {
         lineHeight="44px"
         textAlign="center"
       >
-        موقع تم انشاؤه لاستطلاع رأي المهتمين بإطلاق منظومة تواصل اجتماعي إعلامي
-        عربي في ضوء ما يتعرض له صناع المحتوى، في العالم العربي والعالم الحر، من
-        تحيز واضح وظالم ضد محتواهم وصفحاتهم الداعمة للحق والعدالة والمساواة
-        وحقوق الإنسان من قبل مواقع تواصل عالمية.
+      {t('footer.text')}
       </Text>
     </Box>
     <Text> All Right Reserved © 2023 </Text>

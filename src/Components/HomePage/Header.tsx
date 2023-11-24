@@ -16,6 +16,7 @@ import VolunteerModal from "./Modals/VolunteerModal/VolunteerModal";
 import { useGetStatistics } from "../../hooks/useCore";
 import IntrestModal from "./Modals/InterestModal/IntrestModal";
 import Countdown from "react-countdown";
+import { useTranslation } from 'react-i18next';
 
 interface CountdownRendererProps {
   days: number;
@@ -36,19 +37,19 @@ const Header = () => {
     onOpen: onIOpen,
     onClose: onIClose,
   } = useDisclosure();
+  const { t } = useTranslation();
   const targetDate = new Date("December 24, 2023 23:59:59");
   const renderer: React.FC<CountdownRendererProps> = ({
     days,
     hours,
     minutes,
-    // seconds,
     completed,
   }) => {
     if (completed) {
-      // Render something when the countdown is complete
-      return <span>اكتمل الاستطلاع</span>;
+      return <span>
+        {t('header.completedSurvey')}
+        </span>;
     } else {
-      // Render the countdown components
       return (
         <HStack w="100%" display="flex" className="wrap-responsive" alignItems="center" justifyContent="center" gap={5}>
           <Box className="d-flex-center" justifyContent="center" w={{ sm: "100%", md: "100%" }} h="100%" >
@@ -63,7 +64,7 @@ const Header = () => {
               flexDirection="column"
               alignItems="center"
               justifyContent="center"
-              
+
             >
               <Box className="d-flex-center" justifyContent="center" w="100%">
                 <Button
@@ -77,29 +78,27 @@ const Header = () => {
                   rightIcon={<ArrowBackIcon />}
                   className="button-width"
                 >
-                  مهتم
+                   {t('header.interested')}
                 </Button>
               </Box>
               <Box>
                 <Text
                   fontSize="29px"
-                  fontWeight="800"
-                  w={{ base: "100%", lg: "428px" }}
+                  fontWeight="800" 
                   textAlign="center"
+                  color="#fff"
                 >
-                  سينتهي استطلاع الرأي بعد ثلاثين يوماً.
-                  <br />
-                  شارك في
-                  الاستطلاع وابدي اهتمامك الآن
+                {t('header.readyToVolunteer2')}
+
                 </Text>
               </Box>
 
-              <Text textAlign="center" fontSize="30px" fontWeight="700">
-                عدد المهتمين
+              <Text textAlign="center" fontSize="30px" fontWeight="700" color="#fff">
+              {t('header.volunteerCount2')}
               </Text>
 
               {!isLoading && (
-                <Text fontSize="70px" fontWeight={700} color="#5AA48A">
+                <Text fontSize="70px" fontWeight={700} color="#fff">
                   {
                     data?.interest_count
                   }
@@ -121,7 +120,7 @@ const Header = () => {
               fontWeight="600"
               mb="10px"
             >
-              باقي على الإستطلاع
+        {t('header.remainingSurvey')}
             </Text>
             <HStack dir="ltr" display="flex" justifyContent="space-between" >
               <Box textAlign="center">
@@ -138,10 +137,10 @@ const Header = () => {
                 >
                   {days}
                 </Box>
-                <Text fontFamily="Alexandria">يوم</Text>
+                <Text fontFamily="Alexandria">{t('header.days')}</Text>
               </Box>
-              <Text fontSize="20px"  ml={2}
-                  mr={2} pb="4">
+              <Text fontSize="20px" ml={2}
+                mr={2} pb="4">
                 :
               </Text>
               <Box textAlign="center">
@@ -158,10 +157,10 @@ const Header = () => {
                 >
                   {hours}
                 </Box>
-                <Text fontFamily="Alexandria">ساعة</Text>
+                <Text fontFamily="Alexandria">{t('header.hours')}</Text>
               </Box>
               <Text fontSize="20px" ml={2}
-                  mr={2} pb="4">
+                mr={2} pb="4">
                 :
               </Text>
               <Box textAlign="center">
@@ -178,7 +177,7 @@ const Header = () => {
                 >
                   {minutes}
                 </Box>
-                <Text fontFamily="Alexandria">دقيقة</Text>
+                <Text fontFamily="Alexandria"> {t('header.minutes')}</Text>
               </Box>
             </HStack>
             <Box
@@ -199,7 +198,7 @@ const Header = () => {
               mt={4}
             >
 
-              <VideoPlayer name="intro" thumbnail={HeroImage} url="" />
+              <VideoPlayer name="intro" thumbnail={HeroImage} url="https://youtu.be/t1Rkwb2nLXo" />
             </Box>
           </Box>
           <Box className="d-flex-center" justifyContent="center" w={{ sm: "100%", md: "100%" }} >
@@ -227,25 +226,25 @@ const Header = () => {
                   p="30px"
                   rightIcon={<ArrowBackIcon />}
                 >
-                  تطوع الآن
+                {t('header.volunteerNow')}
                 </Button>
               </Box>
               <Text
                 fontSize="29px"
-                fontWeight="800"
-                w={{ base: "100%", lg: "428px" }}
+                fontWeight="800" 
                 textAlign="center"
-              >
-                هل أنت على استعداد للتطوع في حال تقرر إنشاء منظومة تواصل اجتماعي
-                عربي؟
+                color="#fff"
+                >
+                         {t('header.readyToVolunteer')} 
+          
               </Text>
 
-              <Text textAlign="center" fontSize="30px" fontWeight="700">
-                عدد المتطوعين
+              <Text textAlign="center" fontSize="30px" fontWeight="700" color="#fff">
+              {t('header.volunteerCount')}
               </Text>
 
               {!isLoading && (
-                <Text fontSize="70px" fontWeight={700} color="#5AA48A">
+                <Text fontSize="70px" fontWeight={700} color="#fff">
                   {
                     data?.volunteer_count
                   }
@@ -255,9 +254,7 @@ const Header = () => {
                 <Box mx="auto">
                   <CircularProgress isIndeterminate color="#5AA48A" />
                 </Box>
-              )}
-
-
+              )} 
             </VStack>
           </Box>
         </HStack>
@@ -283,13 +280,7 @@ const Header = () => {
           w="100%"
           fontFamily="Readex Pro"
           color="black"
-        >
-
-
-
-
-
-
+        > 
         </HStack>
       </Box>
     </>

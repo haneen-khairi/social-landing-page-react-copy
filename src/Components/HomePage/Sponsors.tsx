@@ -4,13 +4,15 @@ import SectionTitle from "../SectionTitle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import { useTranslation } from 'react-i18next';
 
 const Sponsors = () => {
   const { data, isLoading } = useGetSponsors();
+  const { t } = useTranslation();
 
   return (
     <Box fontFamily="Noto Kufi Arabic" pt="64px" id="sponsors">
-      <SectionTitle title="الداعمون الإعلاميون" />
+      <SectionTitle title={t('navbar.supporters')} />
 
       {!isLoading && (
         <Box>
