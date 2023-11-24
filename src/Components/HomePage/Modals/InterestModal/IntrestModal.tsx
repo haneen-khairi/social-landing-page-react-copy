@@ -73,13 +73,13 @@ function IntrestModal({ isOpen, onClose }: Props) {
   const shareOnFacebook = () => {
     // Implement Facebook sharing logic here
     // You may use the Facebook SDK or create a custom sharing URL
-    console.log("Share on Facebook:", currentURL);
+    // console.log("Share on Facebook:", currentURL);
   };
 
   const shareOnTwitter = () => {
     // Implement Twitter sharing logic here
     // You may use the Twitter API or create a custom sharing URL
-    console.log("Share on Twitter:", currentURL);
+    // console.log("Share on Twitter:", currentURL);
   };
   const copyToClipboard = () => {
     navigator.clipboard.writeText(
